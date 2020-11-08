@@ -20,6 +20,10 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
+a{
+  font: 'Space Grotesk', sans-serif;
+}
 .content {
   display: flex;
   flex-direction: row;

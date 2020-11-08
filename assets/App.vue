@@ -1,7 +1,9 @@
 <template>
-  <b-container id="app" fluid="md">
+  <b-container id="app" fluid>
     <Header />
-    <router-view/>
+    <b-container fluid="md">
+      <router-view/>
+    </b-container>
   </b-container>
 </template>
 
@@ -25,9 +27,6 @@ body {
   background-color: #ebebeb;
 }
 #app {
-  font-family: 'muli', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   padding-left: 0;
   padding-right: 0;

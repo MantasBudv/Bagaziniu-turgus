@@ -5,7 +5,7 @@
         <b-list-group flush>
             <b-list-group-item class="price">{{price}} €</b-list-group-item>
         </b-list-group>
-        <input type="button" value="Pirkti">
+        <input type="button" value="Pridėti į krepšelį">
     </b-card>
 </template>
 
@@ -14,8 +14,8 @@ export default {
     name: 'Product',
     data () {
         return {
-            title: 'Hello Neda',
-            content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
+            title: 'Test',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             price: 50
         }
     }
@@ -37,7 +37,7 @@ export default {
         width: calc(100% + 2.5rem);
         margin-left: -1.25rem;
         line-height: 2em;
-        font-size: 1.5em;
+        font-size: 1em;
         border: none;
         background-color: rgba(0,0,0,0.03);
         &:hover {

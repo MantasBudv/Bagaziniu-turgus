@@ -1,6 +1,12 @@
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/bootstrap-vue/src/index.scss';
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap');
 * {
     margin: 0;
     padding: 0;
+}
+
+a {
+    color: rgba(255, 255, 255, 0.5);
+    font: 'Space Grotesk', sans-serif;
 }
