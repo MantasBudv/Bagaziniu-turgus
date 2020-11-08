@@ -8,7 +8,7 @@
     <div class="row">
         <p>petsar13</p>
         <p>Kodėl Jūsų puslapis toks fainas?</p> 
-        <b-button @click="onAnswer" variant="primary">Atsakyti</b-button>
+        <b-button @click="onAnswer" variant="dark">Atsakyti</b-button>
     </div>
   </div>
 </template>
