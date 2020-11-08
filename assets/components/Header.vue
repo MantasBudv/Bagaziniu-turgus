@@ -15,14 +15,14 @@
                     <b-button size="sm" class="mr-sm-2" type="submit"><b-icon icon="search"></b-icon></b-button>
                 </b-nav-form>
                 <b-nav-item v-if="!loggedIn" to="/prisijungimas">Prisijungti</b-nav-item>
-                <b-nav-item v-if="loggedIn" to="krepselis">
+                <b-nav-item v-if="loggedIn" to="/krepselis">
                     <b-icon id="cart" icon="cart3" aria-hidden="true"></b-icon>
                     <b-badge v-if="cartItems" variant="light">{{ cartItems }}</b-badge>
                     <b-tooltip target="cart" triggers="hover">
                         Krepšelis
                     </b-tooltip>
                 </b-nav-item>
-                <b-nav-item v-if="loggedIn" to="/profile">
+                <b-nav-item v-if="loggedIn" to="/profilis">
                     <b-icon id="profile" icon="person" aria-hidden="true"></b-icon>
                     <b-tooltip target="profile" triggers="hover">
                         Profilis
@@ -42,22 +42,21 @@
 <script>
 export default {
   name: 'Header',
-  data () {
-      return {
-        cartItems: 0
-      }
-  },
   methods: {
       onSearch () {
           this.cartItems++
       },
       logout () {
           this.$store.state.loggedIn = false
+          this.$router.push('/')
       }
   },
   computed: {
       loggedIn () {
           return this.$store.state.loggedIn
+      },
+      cartItems () {
+          return this.$store.state.cart.length
       }
   }
 }

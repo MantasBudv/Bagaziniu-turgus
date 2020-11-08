@@ -15,9 +15,31 @@ export const store = new Vuex.Store({
             password: 'testas123',
             admin_id: 0
         },
-        loggedIn: true
+        loggedIn: true,
+        product: {
+            id: 1,
+            name: 'Hello Neda',
+            full_description: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
+            date_added: '2020-11-03',
+            price: 50,
+            short_description: 'ipsum lorem ipsum lorem ipsum ',
+            manufacturer: 'Nokia',
+            country_of_origin: 'China',
+            quantity: 55
+        },
+        cart: [ [1,1] ]
     },
     mutations: {
-       
+        addToCart (state, id) {
+            let isAdded = false
+            state.cart.forEach((item) => {
+                if (item[0] == id) {
+                    isAdded = true
+                }
+            })
+            if (!isAdded) {
+                state.cart.push([id, 1])
+            }
+        }
     }
 });

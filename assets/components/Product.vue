@@ -1,22 +1,28 @@
 <template>
-    <b-card :title="title" tag="article" class="product text-center">
+    <b-card :title="product.name" tag="article" class="product text-center">
         <img src="/build/images/money.599ac086.jpg" alt="Image">
-        <b-card-text>{{content}}</b-card-text>
+        <b-card-text>{{product.short_description}}</b-card-text>
         <b-list-group flush>
-            <b-list-group-item class="price">{{price}} €</b-list-group-item>
+            <b-list-group-item class="price">{{product.price}} €</b-list-group-item>
         </b-list-group>
-        <input type="button" value="Pirkti">
+        <div class="flex-row">
+            <input type="button" value="Aprašymas" @click="onAbout">
+            <input type="button" value="Pirkti">
+        </div>
     </b-card>
 </template>
 
 <script>
 export default {
     name: 'Product',
-    data () {
-        return {
-            title: 'Hello Neda',
-            content: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-            price: 50
+    computed: {
+        product () {
+            return this.$store.state.product
+        }
+    },
+    methods: {
+        onAbout () {
+            this.$router.push({path: `/aprasymas/${this.product.id}`})
         }
     }
 }
@@ -34,14 +40,13 @@ export default {
     input {
         cursor: pointer;
         text-decoration: none;
-        width: calc(100% + 2.5rem);
-        margin-left: -1.25rem;
         line-height: 2em;
         font-size: 1.5em;
         border: none;
+        width: 50%;
         background-color: rgba(0,0,0,0.03);
         &:hover {
-        background-color: rgba(0,0,0,0.1);
+            background-color: rgba(0,0,0,0.1);
         }
     }
     .price {
@@ -50,7 +55,12 @@ export default {
         color: #000;
     }
 }
-
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    width: calc(100% + 2.5rem);
+    margin-left: -1.25rem;
+}
 @media (max-width: 992px) { 
     .product {
         flex-basis: 45%;

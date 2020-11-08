@@ -1,5 +1,5 @@
 <template>
-  <div class="upload-form">
+  <div class="profile-form">
     <b-form @submit.prevent="onSubmit">
 
       <b-form-group label="Vardas:" label-size="md">
@@ -45,11 +45,8 @@
 </template>
 
 <script>
-import Filters from '../components/Filters.vue'
-import Product from '../components/Product.vue'
 export default {
   name: 'Profile',
-  components: { Filters, Product },
   data() {
     return {
         user: {},
@@ -79,7 +76,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.upload-form {
+.profile-form {
   padding: 1.5em;
   max-width: 900px;
   background-color: #fff;
