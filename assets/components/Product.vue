@@ -22,9 +22,9 @@ export default {
         },
         isAdmin () {
             if (this.$store.state.user.admin_id == 0) {
-                return true
-            } else {
                 return false
+            } else {
+                return true
             }
         }
     },
