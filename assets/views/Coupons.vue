@@ -19,8 +19,8 @@
             </b-input-group>
         </b-form-group>
 
-        <b-button type="submit" variant="primary" class="ml-auto">Išsaugoti</b-button>
-        <b-button @click="onCancel" variant="primary" class="ml-auto">Atšaukti</b-button>
+        <b-button type="submit" variant="dark" class="ml-auto">Išsaugoti</b-button>
+        <b-button @click="onCancel" variant="dark" class="ml-auto">Atšaukti</b-button>
 
     </b-form>
 
@@ -37,7 +37,7 @@
         <p>2022-10-10</p>
     </div>
 
-    <b-button @click="onCreate" variant="primary" class="ml-auto" v-if="!createNew">Kurti naują kuponą</b-button>
+    <b-button @click="onCreate" variant="dark" class="ml-auto" v-if="!createNew">Kurti naują kuponą</b-button>
   </div>
 </template>
 

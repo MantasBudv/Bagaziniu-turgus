@@ -20,7 +20,7 @@
             <b-form-textarea v-model="supportMessage" placeholder="Žinutė" minlength="20"></b-form-textarea>
           </b-input-group>
         </b-form-group>
-        <b-button type="submit" variant="primary" class="ml-auto">Siųsti</b-button>
+        <b-button type="submit" variant="dark" class="ml-auto">Siųsti</b-button>
       </b-form>
     </div>
   </div>
@@ -64,7 +64,5 @@ export default {
   justify-content: space-between;
   padding: 1em;
 }
-.background-color {
-    background-color: #f0f0f0;
-}
+
 </style>
