@@ -7,7 +7,8 @@
         </b-list-group>
         <div class="flex-row">
             <input type="button" value="Aprašymas" @click="onAbout">
-            <input type="button" value="Pirkti">
+            <input type="button" value="Pirkti" v-if="!isAdmin">
+            <input type="button" value="Redaguoti" v-if="isAdmin" @click="onEdit">
         </div>
     </b-card>
 </template>
@@ -18,11 +19,21 @@ export default {
     computed: {
         product () {
             return this.$store.state.product
+        },
+        isAdmin () {
+            if (this.$store.state.user.admin_id == 0) {
+                return true
+            } else {
+                return false
+            }
         }
     },
     methods: {
         onAbout () {
             this.$router.push({path: `/aprasymas/${this.product.id}`})
+        },
+        onEdit () {
+            this.$router.push({path: `/redagavimas/${this.product.id}`})
         }
     }
 }

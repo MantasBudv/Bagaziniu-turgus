@@ -15,17 +15,23 @@
                     <b-button size="sm" class="mr-sm-2" type="submit"><b-icon icon="search"></b-icon></b-button>
                 </b-nav-form>
                 <b-nav-item v-if="!loggedIn" to="/prisijungimas">Prisijungti</b-nav-item>
-                <b-nav-item v-if="loggedIn" to="/krepselis">
+                <b-nav-item v-if="loggedIn && !isAdmin" to="/krepselis">
                     <b-icon id="cart" icon="cart3" aria-hidden="true"></b-icon>
                     <b-badge v-if="cartItems" variant="light">{{ cartItems }}</b-badge>
                     <b-tooltip target="cart" triggers="hover">
                         Krepšelis
                     </b-tooltip>
                 </b-nav-item>
-                <b-nav-item v-if="loggedIn" to="/profilis">
+                <b-nav-item v-if="loggedIn && !isAdmin" to="/profilis">
                     <b-icon id="profile" icon="person" aria-hidden="true"></b-icon>
                     <b-tooltip target="profile" triggers="hover">
                         Profilis
+                    </b-tooltip>
+                </b-nav-item>
+                <b-nav-item v-if="loggedIn && isAdmin" to="/prideti">
+                    <b-icon id="add" icon="plus-circle-fill" aria-hidden="true"></b-icon>
+                    <b-tooltip target="add" triggers="hover">
+                        Pridėti prekę
                     </b-tooltip>
                 </b-nav-item>
                 <b-nav-item v-if="loggedIn" @click="logout">
@@ -57,6 +63,13 @@ export default {
       },
       cartItems () {
           return this.$store.state.cart.length
+      },
+      isAdmin () {
+          if (this.$store.state.user.admin_id == 0) {
+            return true
+          } else {
+              return false
+          }
       }
   }
 }
