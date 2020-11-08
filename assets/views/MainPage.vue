@@ -6,6 +6,11 @@
       <Product />
       <Product />
       <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
+      <Product />
     </div>
     <div class="support" v-if="!isAdmin">
       <h2>Pagalba</h2>
