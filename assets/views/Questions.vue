@@ -1,36 +1,31 @@
 <template>
-  <div class="cart">
+  <div class="questions">
     <div class="row names">
-        <p>Pavadinimas</p>
-        <p>Trumpas aprašymas</p>
-        <p>Kiekis</p> 
-        <p>Kaina</p>
+        <p>Vartotojas</p>
+        <p>Klausimas</p>
+        <p></p>
     </div>
     <div class="row">
-        <p>{{product.name}}</p>
-        <p>{{product.short_description}}</p>
-        <p>{{quantity}}</p> 
-        <p>{{product.price}} €</p>
+        <p>petsar13</p>
+        <p>Kodėl Jūsų puslapis toks fainas?</p> 
+        <b-button @click="onAnswer" variant="primary">Atsakyti</b-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'About',
-  computed: {
-      product () {
-          return this.$store.state.product
+  name: 'Questions',
+  methods: {
+      onAnswer () {
+          
       },
-      quantity () {
-          return this.$store.state.cart[0][1]
-      }
   }
 }
 </script>
 
 <style lang='scss' scoped>
-.cart {
+.questions {
     display: flex;
     flex-direction: column;
     padding: 1.5em;
@@ -43,7 +38,7 @@ export default {
     display: flex;
     flex-direction: row;
     p {
-        width: 25%;
+        width: 40%;
         padding: 0.5em;
     }
 }

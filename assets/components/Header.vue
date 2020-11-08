@@ -34,6 +34,18 @@
                         Pridėti prekę
                     </b-tooltip>
                 </b-nav-item>
+                <b-nav-item v-if="loggedIn && isAdmin" to="/nuolaidos">
+                    <b-icon id="discount" icon="server" aria-hidden="true"></b-icon>
+                    <b-tooltip target="discount" triggers="hover">
+                        Nuolaidų kuponai
+                    </b-tooltip>
+                </b-nav-item>
+                <b-nav-item v-if="loggedIn && isAdmin" to="/klausimai">
+                    <b-icon id="question" icon="question-circle-fill" aria-hidden="true"></b-icon>
+                    <b-tooltip target="question" triggers="hover">
+                        Klientų klausimai
+                    </b-tooltip>
+                </b-nav-item>
                 <b-nav-item v-if="loggedIn" @click="logout">
                     <b-icon id="logout" icon="power" aria-hidden="true"></b-icon>
                     <b-tooltip target="logout" triggers="hover">

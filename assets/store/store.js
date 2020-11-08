@@ -13,7 +13,7 @@ export const store = new Vuex.Store({
             phone: '+37060000000',
             username: 'JonJon',
             password: 'testas123',
-            admin_id: 0
+            admin_id: 5
         },
         loggedIn: true,
         product: {

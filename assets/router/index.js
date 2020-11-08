@@ -9,6 +9,8 @@ import About from '../views/About.vue'
 import Cart from '../views/Cart.vue'
 import AddProduct from '../views/AddProduct.vue'
 import Edit from '../views/Edit.vue'
+import Coupons from '../views/Coupons.vue'
+import Questions from '../views/Questions.vue'
 
 
 Vue.use(VueRouter);
@@ -37,9 +39,19 @@ export default new VueRouter({
       component: About
     },
     {
+      path: '/klausimai',
+      name: 'Questions',
+      component: Questions
+    },
+    {
       path: '/redagavimas/:id',
       name: 'Edit',
       component: Edit
+    },
+    {
+      path: '/nuolaidos',
+      name: 'Coupons',
+      component: Coupons
     },
     {
       path: '/prideti',
