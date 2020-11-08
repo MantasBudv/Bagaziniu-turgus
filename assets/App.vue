@@ -1,7 +1,9 @@
 <template>
-  <b-container id="app" fluid="md">
+  <b-container id="app" fluid>
     <Header />
-    <router-view/>
+    <b-container fluid="md">
+      <router-view/>
+    </b-container>
   </b-container>
 </template>
 
