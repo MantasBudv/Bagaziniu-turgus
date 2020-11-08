@@ -38,8 +38,8 @@
         </b-input-group>
       </b-form-group>
 
-      <b-button type="submit" variant="primary" class="ml-auto" v-if="disabledFields">Redaguoti</b-button>
-      <b-button type="submit" variant="primary" class="ml-auto" v-if="!disabledFields">Išsaugoti</b-button>
+      <b-button type="submit" variant="dark" class="ml-auto" v-if="disabledFields">Redaguoti</b-button>
+      <b-button type="submit" variant="dark" class="ml-auto" v-if="!disabledFields">Išsaugoti</b-button>
     </b-form>
   </div>
 </template>

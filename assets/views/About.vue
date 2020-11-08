@@ -1,17 +1,33 @@
 <template>
   <div class="about">
-    <div class="column">
-        <img src="../img/money.jpg">
-    </div>
-    <div class="column">
-        <p class="bigger">{{product.name}}</p>
-        <p>{{product.full_description}}</p>
-        <p class="label">Gamintojas:</p> <p>{{product.manufacturer}}</p> 
-        <p class="label">Kilmės šalis:</p> <p>{{product.country_of_origin}}</p> 
-        <p class="label">Kiekis sandelyje:</p> <p>{{quantity}}</p> 
-        <p class="bigger">{{product.price}} €</p>
-        <b-button variant="primary" @click="addToCart">Pridėti į krepšelį</b-button>
-    </div>
+        <div class="column">
+            <img id ="product_picture" src="/build/images/money.599ac086.jpg" alt="Image">
+        </div>
+        <div class="column">
+            <p class="bigger">{{product.name}}</p>
+            <p>{{product.full_description}}</p>
+
+            <table class="table">
+            <tbody>
+                <tr>
+                <th scope="row">Gamintojas:</th>
+                <td>{{product.manufacturer}}</td>
+                </tr>
+                <tr>
+                <th scope="row">Kilmės šalis:</th>
+                <td>{{product.country_of_origin}}</td>
+                </tr>
+                <tr>
+                <th scope="row">Kiekis sandelyje:</th>
+                <td>{{quantity}}</td>
+
+                </tr>
+            </tbody>
+            </table>
+            
+            <p class="bigger">{{product.price}} €</p>
+            <b-button variant="dark" @click="addToCart"><b-icon id="profile" icon="plus" aria-hidden="true"></b-icon> Pridėti į krepšelį</b-button>
+        </div>
   </div>
 </template>
 
@@ -52,8 +68,12 @@ export default {
 .column {
     width: 50%;
     img {
-        max-width: 45%;
-        min-width: 100px;
+        width: 70%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        margin-bottom: auto;
     }
 }
 p {

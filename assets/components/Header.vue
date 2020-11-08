@@ -1,19 +1,22 @@
 <template>
-    <b-navbar toggleable="md" type="dark" variant="dark"> <!--primary, success, info, warning, danger, dark, or light -->
-        <b-navbar-brand to="/">LDK monetos</b-navbar-brand>
+    <b-navbar sticky="top" toggleable="md" type="dark" variant="dark"> <!--primary, success, info, warning, danger, dark, or light -->
+     <b-navbar-brand id="title" to="/">Bagažinių turgus</b-navbar-brand>
         
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
         <b-collapse id="nav-collapse" is-nav>
-            <b-navbar-nav>
-                <b-nav-item to="/">Pradžia</b-nav-item>
-            </b-navbar-nav>
             
             <b-navbar-nav class="ml-auto">
                 <b-nav-form @submit.prevent="onSearch">
                     <b-form-input size="sm" class="mr-sm-2" placeholder="Ieškoti..."></b-form-input>
                     <b-button size="sm" class="mr-sm-2" type="submit"><b-icon icon="search"></b-icon></b-button>
                 </b-nav-form>
+                                <b-nav-item to="/">
+                    <b-icon id="home" icon="house" aria-hidden="true"></b-icon>
+                    <b-tooltip target="home" triggers="hover">
+                        Namai
+                    </b-tooltip>
+                </b-nav-item>
                 <b-nav-item v-if="!loggedIn" to="/prisijungimas">Prisijungti</b-nav-item>
                 <b-nav-item v-if="loggedIn" to="/krepselis">
                     <b-icon id="cart" icon="cart3" aria-hidden="true"></b-icon>
@@ -63,6 +66,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
   .btn-outline-none {
     color: rgba(255, 255, 255, 0.5) !important;
     &:hover {
@@ -71,5 +75,8 @@ export default {
   }
   svg {
       font-size: 150% !important;
+  }
+    #title {
+    font-family: 'Pacifico', cursive;  
   }
 </style>

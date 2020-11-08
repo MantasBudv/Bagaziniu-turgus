@@ -6,8 +6,8 @@
             <b-list-group-item class="price">{{product.price}} €</b-list-group-item>
         </b-list-group>
         <div class="flex-row">
-            <input type="button" value="Aprašymas" @click="onAbout">
-            <input type="button" value="Pirkti">
+            <input type="button" variant="dark" value="Aprašymas" @click="onAbout">
+            <input type="button" variant="dark" value="Pirkti">
         </div>
     </b-card>
 </template>
