@@ -1,6 +1,7 @@
 <template>
   <div class="cart">
 
+
       <h2>Prekių krepšelis </h2>
     <table class="table table-striped table-hover align-middle">
     <thead>
