@@ -17,6 +17,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Libre+Baskerville&family=Spartan&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
@@ -27,9 +28,10 @@ body {
   background-color: #ebebeb;
 }
 #app {
-  font-family: 'muli', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'Alegreya Sans', sans-serif;
+  font-family: 'Libre Baskerville', serif;
+  font-family: 'Spartan', sans-serif;
   color: #2c3e50;
   padding-left: 0;
   padding-right: 0;
