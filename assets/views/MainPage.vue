@@ -3,6 +3,9 @@
     <Filters />
     <div class="content">
       <Product />
+      <Product />
+      <Product />
+      <Product />
     </div>
   </div>
 </template>
