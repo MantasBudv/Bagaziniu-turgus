@@ -1,16 +1,33 @@
 <template>
   <div class="questions">
-    <div class="row names">
-        <p>Vartotojas</p>
-        <p>Klausimas</p>
-        <p></p>
-    </div>
-    <div class="row">
-        <p>petsar13</p>
-        <p>Kodėl Jūsų puslapis toks fainas?</p> 
-        <b-button @click="onAnswer" variant="dark">Atsakyti</b-button>
-    </div>
-  </div>
+  
+
+      <table class="table table-striped table-hover align-middle">
+    <thead>
+        <tr>
+        <th scope="col">Vartotojas</th>
+        <th scope="col">Klausimas</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>petsar13</td>
+            <td>Kodėl Jūsų puslapis toks fainas?</td>
+            <td><b-button @click="onAnswer" variant="dark">Atsakyti</b-button></td>
+        </tr>
+        <tr>
+            <td>petsar13</td>
+            <td>Kodėl Jūsų puslapis toks fainas?</td>
+            <td><b-button @click="onAnswer" variant="dark">Atsakyti</b-button></td>
+        </tr>
+        <tr>
+            <td>petsar13</td>
+            <td>Kodėl Jūsų puslapis toks fainas?</td>
+            <td><b-button @click="onAnswer" variant="dark">Atsakyti</b-button></td>
+        </tr>
+    </tbody>
+      </table></div>
 </template>
 
 <script>
@@ -39,7 +56,6 @@ export default {
     flex-direction: row;
     p {
         width: 40%;
-        padding: 0.5em;
     }
 }
 .names {

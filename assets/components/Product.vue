@@ -1,6 +1,6 @@
 <template>
     <b-card :title="product.name" tag="article" class="product text-center">
-        <img src="/build/images/money.599ac086.jpg" alt="Image">
+        <img src="build/images/money.jpg" />
         <b-card-text>{{product.short_description}}</b-card-text>
         <b-list-group flush>
             <b-list-group-item class="price">{{product.price}} €</b-list-group-item>
@@ -43,6 +43,7 @@ export default {
 
 <style lang='scss' scoped>
 .product {
+    
     flex-basis: 32%;
     margin-bottom: 2em;
     color: rgba(0,0,0,0.5);
@@ -54,7 +55,7 @@ export default {
         cursor: pointer;
         text-decoration: none;
         line-height: 2em;
-        font-size: 1.5em;
+        font-size: 1em;
         border: none;
         width: 50%;
         background-color: rgba(0,0,0,0.03);

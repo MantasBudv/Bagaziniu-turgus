@@ -13,17 +13,23 @@
       <Product />
     </div>
     <div class="support" v-if="!isAdmin">
+       <b-icon icon="question-circle-fill" animation="spin" v-b-modal.my-modal font-scale="2" ></b-icon>
+    
+    <b-modal id="my-modal" hide-footer>
+    <template #modal-title>
       <h2>Pagalba</h2>
+    </template>
       <b-form @submit.prevent="onSubmit">
         <b-form-group label-size="md">
           <b-input-group size="md">
             <b-form-textarea v-model="supportMessage" placeholder="Žinutė" minlength="20"></b-form-textarea>
           </b-input-group>
         </b-form-group>
-        <b-button type="submit" variant="dark" class="ml-auto">Siųsti</b-button>
+        <b-button align="right" type="submit" variant="dark" class="ml-auto">Siųsti</b-button>
       </b-form>
-    </div>
-  </div>
+      </b-modal>
+  </div></div>
+  
 </template>
 
 <script>
@@ -63,6 +69,13 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 1em;
+}
+.support {
+ position: fixed;
+  bottom: 0;
+  right: -200px;
+  width: 300px;
+  margin-bottom: 30px;
 }
 
 </style>

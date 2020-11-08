@@ -15,7 +15,7 @@
 
         <b-form-group :label="this.selected === 'Procentinis' ? 'Nuolaida procentais:' : 'Nuolaidos suma:'" label-size="lg">
             <b-input-group size="md">
-                <b-form-input v-model="amount" required placeholder="Pavadinimas" maxlength="3"></b-form-input>
+                <b-form-input v-model="amount" required placeholder="0.000" maxlength="3"></b-form-input>
             </b-input-group>
         </b-form-group>
 
