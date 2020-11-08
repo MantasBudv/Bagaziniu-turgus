@@ -21,7 +21,7 @@ export default {
   padding: 0;
 }
 body {
-  min-height: 200vh;
+  min-height: 100vh;
   background-color: #ebebeb;
 }
 #app {

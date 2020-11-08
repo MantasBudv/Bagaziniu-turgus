@@ -22,7 +22,7 @@
                         Krepšelis
                     </b-tooltip>
                 </b-nav-item>
-                <b-nav-item v-if="loggedIn" @click="logout">
+                <b-nav-item v-if="loggedIn" to="/profile">
                     <b-icon id="profile" icon="person" aria-hidden="true"></b-icon>
                     <b-tooltip target="profile" triggers="hover">
                         Profilis
@@ -52,12 +52,12 @@ export default {
           this.cartItems++
       },
       logout () {
-          
+          this.$store.state.loggedIn = false
       }
   },
   computed: {
       loggedIn () {
-          return true
+          return this.$store.state.loggedIn
       }
   }
 }

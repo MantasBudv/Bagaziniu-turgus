@@ -1,6 +1,6 @@
 <template>
     <b-card :title="title" tag="article" class="product text-center">
-        <img src="/build/images/money.jpg" alt="Image">
+        <img src="/build/images/money.599ac086.jpg" alt="Image">
         <b-card-text>{{content}}</b-card-text>
         <b-list-group flush>
             <b-list-group-item class="price">{{price}} €</b-list-group-item>
@@ -10,7 +10,6 @@
 </template>
 
 <script>
-
 export default {
     name: 'Product',
     data () {
