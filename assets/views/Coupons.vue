@@ -29,12 +29,29 @@
         <p>Tipas</p>
         <p>Nuolaidos kiekis</p> 
         <p>Galiojimo pabaiga</p> 
+        <p></p> 
+
     </div>
     <div class="row" v-if="!createNew">
-        <p>50</p>
+        <p>Batai</p>
         <p>Procentinis</p> 
         <p>50</p>
         <p>2022-10-10</p>
+        <p><b-button @click="onCancel" variant="dark" class="ml-auto">Šalinti</b-button></p> 
+    </div>
+        <div class="row" v-if="!createNew">
+        <p>no50</p>
+        <p>Procentinis</p> 
+        <p>50</p>
+        <p>2022-10-10</p>
+        <p><b-button @click="onCancel" variant="dark" class="ml-auto">Šalinti</b-button></p> 
+    </div>
+        <div class="row" v-if="!createNew">
+        <p>Testukas</p>
+        <p>Procentinis</p> 
+        <p>50</p>
+        <p>2022-10-10</p>
+        <p><b-button @click="onCancel" variant="dark" class="ml-auto">Šalinti</b-button></p> 
     </div>
 
     <b-button @click="onCreate" variant="dark" class="ml-auto" v-if="!createNew">Kurti naują kuponą</b-button>
@@ -81,7 +98,7 @@ export default {
     display: flex;
     flex-direction: row;
     p {
-        width: 25%;
+        width: 20%;
         padding: 0.5em;
     }
 }

@@ -10,6 +10,7 @@
             <input type="button" value="Aprašymas" @click="onAbout">
             <input type="button" value="Pirkti" v-if="!isAdmin">
             <input type="button" value="Redaguoti" v-if="isAdmin" @click="onEdit">
+            <input type="button" value="Šalinti" v-if="isAdmin" @click="">
 
         </div>
     </b-card>
