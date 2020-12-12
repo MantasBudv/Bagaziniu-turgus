@@ -1,17 +1,15 @@
 <template>
     <b-card :title="product.name" tag="article" class="product text-center">
         <img src="build/images/money.jpg" />
-        <b-card-text>{{product.short_description}}</b-card-text>
+        <b-card-text>{{product.shortDescription}}</b-card-text>
         <b-list-group flush>
             <b-list-group-item class="price">{{product.price}} €</b-list-group-item>
         </b-list-group>
         <div class="flex-row">
-
             <input type="button" value="Aprašymas" @click="onAbout">
             <input type="button" value="Pirkti" v-if="!isAdmin">
             <input type="button" value="Redaguoti" v-if="isAdmin" @click="onEdit">
-            <input type="button" value="Šalinti" v-if="isAdmin" @click="">
-
+            <input type="button" value="Šalinti" v-if="isAdmin" @click="onDelete($product.id)">
         </div>
     </b-card>
 </template>
@@ -19,10 +17,10 @@
 <script>
 export default {
     name: 'Product',
+    props: {
+        product: Object
+    },
     computed: {
-        product () {
-            return this.$store.state.product
-        },
         isAdmin () {
             if (this.$store.state.user.admin_id == 0) {
                 return false
@@ -37,6 +35,9 @@ export default {
         },
         onEdit () {
             this.$router.push({path: `/redagavimas/${this.product.id}`})
+        },
+        onDelete () {
+
         }
     }
 }

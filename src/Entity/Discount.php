@@ -60,6 +60,30 @@ class Discount
         return $this->sum;
     }
 
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function setIsPercentile($is_percentile)
+    {
+        $this->is_percentile = $is_percentile;
+    }
+
+    public function setExpDate($exp_date)
+    {
+        $this->exp_date = $exp_date;
+    }
+
+    public function setSum($sum)
+    {
+        $this->sum = $sum;
+    }
+
+    public function setPercentile($percentile)
+    {
+        $this->percentile = $percentile;
+    }
 }
 
 ?>

@@ -32,28 +32,15 @@
         <p></p> 
 
     </div>
-    <div class="row" v-if="!createNew">
-        <p>Batai</p>
-        <p>Procentinis</p> 
-        <p>50</p>
-        <p>2022-10-10</p>
-        <p><b-button @click="onCancel" variant="dark" class="ml-auto">Šalinti</b-button></p> 
+    <div v-if="!createNew">
+        <div class="row" v-for="(coupon, index) in coupons" :key="index">
+            <p>{{ coupon.name }}</p>
+            <p>{{ coupon.isPercentile == 1 ? 'Procentinis' : 'Fiksuotas' }}</p> 
+            <p>{{ coupon.isPercentile == 1 ? coupon.percentile : coupon.sum }}</p>
+            <p>{{ coupon.expDate ? coupon.expDate : 'Neribotas' }}</p>
+            <p><b-button @click="onDelete(coupon.name)" variant="dark" class="ml-auto">Šalinti</b-button></p> 
+        </div>
     </div>
-        <div class="row" v-if="!createNew">
-        <p>no50</p>
-        <p>Procentinis</p> 
-        <p>50</p>
-        <p>2022-10-10</p>
-        <p><b-button @click="onCancel" variant="dark" class="ml-auto">Šalinti</b-button></p> 
-    </div>
-        <div class="row" v-if="!createNew">
-        <p>Testukas</p>
-        <p>Procentinis</p> 
-        <p>50</p>
-        <p>2022-10-10</p>
-        <p><b-button @click="onCancel" variant="dark" class="ml-auto">Šalinti</b-button></p> 
-    </div>
-
     <b-button @click="onCreate" variant="dark" class="ml-auto" v-if="!createNew">Kurti naują kuponą</b-button>
   </div>
 </template>
@@ -66,25 +53,65 @@ export default {
           couponName: '',
           selected: 'Procentinis',
           amount: null,
-          createNew: false
+          createNew: false,
+          coupons: []
       }
   },
   methods: {
       onSubmit () {
-        // add to coupon list
-        this.createNew = false
+            console.log('lol')
+            if (this.selected == 'Procentinis') {
+                axios.post(`/nuolaidos/naujas`, {
+                    name: this.couponName,
+                    is_percentile: 1,
+                    percentile: this.amount
+                }).then((res) => {
+                    console.log(res)
+                    this.getAll()
+                })
+            } else {
+                axios.post(`/nuolaidos/naujas`, {
+                    name: this.couponName,
+                    is_percentile: 0,
+                    sum: this.amount
+                }).then((res) => {
+                    console.log(res)
+                    this.getAll()
+                })
+            }
+            this.createNew = false
+            this.couponName = ''
+            this.selected = 'Procentinis'
+            this.amount = null
       },
       onCancel () {
-        this.createNew = false
+            this.createNew = false
+            this.couponName = ''
+            this.selected = 'Procentinis'
+            this.amount = null
       },
       onCreate () {
-        this.createNew = true 
+            this.createNew = true 
+      },
+      onDelete (name) {
+            axios.delete(`/nuolaidos/trinti/${name}`).then((res) => {
+                const index = this.coupons.findIndex(item => item.name === name)
+                this.coupons.splice(index, 1)
+            })
+      },
+      getAll () {
+        axios.get('/nuolaidos/visos').then((res)=>{
+            this.coupons = res.data
+            res.data.forEach((item) => {
+                if (item.expDate) {
+                    item.expDate = item.expDate.substring(0, 10)
+                }
+            })
+        })
       }
   },
   mounted () {
-      axios.get('/nuolaidos').then((res)=>{
-          console.log(res)
-      })
+      this.getAll()
   }
 }
 </script>
