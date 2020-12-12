@@ -10,13 +10,13 @@
 
       <b-form-group label="Pilnas aprašymas:" label-size="lg">
         <b-input-group size="md">
-          <b-form-textarea v-model="product.full_description" required placeholder="Pilnas aprašymas" maxlength="255"></b-form-textarea>
+          <b-form-textarea v-model="product.fullDescription" required placeholder="Pilnas aprašymas" maxlength="255"></b-form-textarea>
         </b-input-group>
       </b-form-group>
       
       <b-form-group label="Trumpas aprašymas:" label-size="lg">
         <b-input-group size="md">
-          <b-form-textarea v-model="product.short_description" required placeholder="Trumpas aprašymas" maxlength="255"></b-form-textarea>
+          <b-form-textarea v-model="product.shortDescription" required placeholder="Trumpas aprašymas" maxlength="255"></b-form-textarea>
         </b-input-group>
       </b-form-group>
 
@@ -34,7 +34,7 @@
 
       <b-form-group label="Kilmės šalis:" label-size="lg">
         <b-input-group size="md">
-          <b-form-input v-model="product.country_of_origin" required placeholder="Kilmės šalis" maxlength="50"></b-form-input>
+          <b-form-input v-model="product.countryOfOrigin" required placeholder="Kilmės šalis" maxlength="50"></b-form-input>
         </b-input-group>
       </b-form-group>
       
@@ -59,13 +59,34 @@ export default {
   },
   methods: {
     onSubmit () {
-        // update product
+        axios.post('/keistiProdukta', {
+          'id': this.$route.params.id,
+          'name': this.product.name,
+          'fullDescription': this.product.fullDescription,
+          'shortDescription': this.product.shortDescription,
+          'price': this.product.price,
+          'manufacturer': this.product.manufacturer,
+          'countryOfOrigin': this.product.countryOfOrigin,
+          'quantity': this.product.quantity
+          }).then((res)=>{
+          this.product = res.data
+          console.log(this.product)
+        })
         this.$router.push('/')
     }
   },
   created () {
       this.product = this.$store.state.product
   },
+  mounted () {
+  axios.get('/gautiProdukta', {
+    params: {
+        id: this.$route.params.id
+    }}).then((res)=>{
+        this.product = res.data
+        console.log(this.product)
+  })
+  }
 }
 </script>
 
