@@ -1,5 +1,5 @@
 <template>
-    <b-navbar sticky="top" toggleable="md" type="dark" variant="dark"> <!--primary, success, info, warning, danger, dark, or light -->
+    <b-navbar :sticky="true" toggleable="md" type="dark" variant="dark"> <!--primary, success, info, warning, danger, dark, or light -->
      <b-navbar-brand id="title" to="/">Bagažinių turgus</b-navbar-brand>
         
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

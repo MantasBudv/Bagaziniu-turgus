@@ -16,17 +16,6 @@ export const store = new Vuex.Store({
             admin_id: 1
         },
         loggedIn: true,
-        product: {
-            id: 1,
-            name: 'Testas',
-            full_description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            date_added: '2020-11-03',
-            price: 50,
-            short_description: 'Lorem ipsum dolor sit amet',
-            manufacturer: 'Nokia',
-            country_of_origin: 'China',
-            quantity: 55
-        },
         cart: [
             [1, 1]
         ]
