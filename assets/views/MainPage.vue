@@ -45,9 +45,13 @@ export default {
   },
   methods: {
     onSubmit () {
-      // send message
-      alert('Žinutė išsiųsta')
-      this.supportMessage = ''
+      axios.post("/support/request/naujas", {
+        "username":this.$store.state.user.username,
+        "message":this.supportMessage
+      }).then(res=>{
+        alert('Žinutė išsiųsta')
+      })
+
     }
   },
   computed: {

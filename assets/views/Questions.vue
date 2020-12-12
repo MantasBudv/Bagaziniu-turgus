@@ -11,20 +11,10 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>petsar13</td>
-            <td>Kodėl Jūsų puslapis toks fainas?</td>
-            <td><b-button @click="onAnswer" variant="dark">Atsakyti</b-button></td>
-        </tr>
-        <tr>
-            <td>petsar13</td>
-            <td>Kodėl Jūsų puslapis toks fainas?</td>
-            <td><b-button @click="onAnswer" variant="dark">Atsakyti</b-button></td>
-        </tr>
-        <tr>
-            <td>petsar13</td>
-            <td>Kodėl Jūsų puslapis toks fainas?</td>
-            <td><b-button @click="onAnswer" variant="dark">Atsakyti</b-button></td>
+        <tr v-for="(question,index) in questions" :key="index">
+            <td>{{question.username}}</td>
+            <td>{{question.message}}</td>
+            <td><b-button @click="onAnswer(question.id)" variant="dark">Atsakyti</b-button></td>
         </tr>
     </tbody>
       </table></div>
@@ -33,10 +23,23 @@
 <script>
 export default {
   name: 'Questions',
+  data() {
+      return{
+          questions:[]
+      }
+  },
   methods: {
-      onAnswer () {
-          
+      onAnswer(id) {
+          axios.post("/support/request/answer", {'id':id}).then((res)=>{
+            const index = this.questions.findIndex(item => item.id === id)
+            this.questions.splice(index, 1)
+          })
       },
+  },
+  mounted() {
+      axios.get("/support/request").then((res)=>{
+          this.questions=res.data
+      })
   }
 }
 </script>
