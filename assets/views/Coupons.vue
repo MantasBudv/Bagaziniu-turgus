@@ -80,6 +80,11 @@ export default {
       onCreate () {
         this.createNew = true 
       }
+  },
+  mounted () {
+      axios.get('/nuolaidos').then((res)=>{
+          console.log(res)
+      })
   }
 }
 </script>
