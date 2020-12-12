@@ -5,7 +5,7 @@
         </div>
         <div class="column">
             <p class="bigger">{{product.name}}</p>
-            <p>{{product.full_description}}</p>
+            <p>{{product.fullDescription}}</p>
 
             <table class="table">
             <tbody>
@@ -15,11 +15,11 @@
                 </tr>
                 <tr>
                 <th scope="row">Kilmės šalis:</th>
-                <td>{{product.country_of_origin}}</td>
+                <td>{{product.countryOfOrigin}}</td>
                 </tr>
                 <tr>
                 <th scope="row">Kiekis sandelyje:</th>
-                <td>{{quantity}}</td>
+                <td>{{product.quantity}}</td>
 
                 </tr>
             </tbody>
@@ -34,23 +34,27 @@
 <script>
 export default {
   name: 'About',
-  computed: {
-      product () {
-          return this.$store.state.product
-      },
-      quantity () {
-          const quantity = this.$store.state.product.quantity
-          if (quantity > 10) {
-              return '10+'
-          } else {
-              return quantity
-          }
-      }
+
+  data () {
+    return {
+      product: []
+    }
   },
   methods: {
       addToCart () {
           this.$store.commit('addToCart', this.product.id)
       }
+  },
+  mounted () {
+    //   axios.post({path: `/gautiProdukta/${this.$route.params.id}`}).then((res)=>{
+
+  axios.get('/gautiProdukta', {
+    params: {
+        id: this.$route.params.id
+    }}).then((res)=>{
+        this.product = res.data
+        console.log(this.product)
+      })
   }
 }
 </script>
