@@ -14,6 +14,7 @@ import Edit from '../views/Edit.vue'
 import Coupons from '../views/Coupons.vue'
 import Questions from '../views/Questions.vue'
 import Orders from '../views/Orders.vue'
+import OrdersR from '../views/OrdersR.vue'
 
 Vue.use(VueRouter);
 
@@ -85,6 +86,11 @@ const router = new VueRouter({
       path: '/uzsakymai',
       name: 'Orders',
       component: Orders
+    },
+    {
+      path: '/uzsakymu_red',
+      name: 'OrdersR',
+      component: OrdersR
     }
   ]
 })

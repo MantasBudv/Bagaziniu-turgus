@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,6 +11,8 @@ use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+use TCPDF;
 
 class ProductController extends AbstractController
 {
@@ -103,5 +106,4 @@ class ProductController extends AbstractController
         $entityManager->flush();
         return new Response(200);
     }
-
 }

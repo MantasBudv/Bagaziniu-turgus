@@ -64,6 +64,12 @@
                         Klientų klausimai
                     </b-tooltip>
                 </b-nav-item>
+                <b-nav-item v-if="loggedIn && isAdmin" to="/uzsakymu_red">
+                    <b-icon id="question" icon="bag-check" aria-hidden="true"></b-icon>
+                    <b-tooltip target="question" triggers="hover">
+                        Klientų klausimai
+                    </b-tooltip>
+                </b-nav-item>
                 <b-nav-item v-if="loggedIn" @click="logout">
                     <b-icon id="logout" icon="power" aria-hidden="true"></b-icon>
                     <b-tooltip target="logout" triggers="hover">
