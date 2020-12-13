@@ -32,7 +32,6 @@ export default {
   },
   mounted () {
       axios.get('/mokejimai/visi').then((res) => {
-          console.log(res.data)
           this.orders = res.data
           res.data.forEach((item) => {
             if (item.creationDate) {

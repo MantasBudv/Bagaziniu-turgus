@@ -21,7 +21,7 @@ class Order
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $status;
+    private $status = 'completed';
 
     /**
      * @ORM\Column(type="datetime")

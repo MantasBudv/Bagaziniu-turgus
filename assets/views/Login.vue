@@ -33,7 +33,6 @@ export default {
       axios.post(`/prisijungimas`,{'username':this.username,'password':this.password}).then((res) => {
         this.$store.state.loggedIn = true
         this.$store.state.user = res.data.user
-        console.log(this.$store.state.user)
         this.$router.push({path: `/`})
       }).catch((err)=>{
         alert("Neteisingi prisijungimo duomenys")

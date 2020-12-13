@@ -70,7 +70,6 @@ export default {
           'quantity': this.product.quantity
           }).then((res)=>{
           this.product = res.data
-          console.log(this.product)
         })
         this.$router.push('/')
     }
@@ -84,7 +83,6 @@ export default {
         id: this.$route.params.id
     }}).then((res)=>{
         this.product = res.data
-        console.log(this.product)
   })
   }
 }

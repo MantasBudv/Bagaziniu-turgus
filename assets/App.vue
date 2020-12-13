@@ -12,7 +12,18 @@ import Header from './components/Header.vue'
 
 export default {
   name: 'App',
-  components: { Header }
+  components: { Header },
+  mounted () {
+    axios.get('/produktai/visi').then((res)=>{
+      res.data.forEach((item) => {
+        item.inCart = 0
+      })
+      this.$store.state.products = res.data
+    })
+    axios.get('/nuolaidos/visos').then((res)=>{
+      this.$store.state.coupons = res.data
+    })
+  }
 }
 </script>
 

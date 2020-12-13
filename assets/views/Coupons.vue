@@ -59,14 +59,12 @@ export default {
   },
   methods: {
       onSubmit () {
-            console.log('lol')
             if (this.selected == 'Procentinis') {
                 axios.post(`/nuolaidos/naujas`, {
                     name: this.couponName,
                     is_percentile: 1,
                     percentile: this.amount
                 }).then((res) => {
-                    console.log(res)
                     this.getAll()
                 })
             } else {
@@ -75,7 +73,6 @@ export default {
                     is_percentile: 0,
                     sum: this.amount
                 }).then((res) => {
-                    console.log(res)
                     this.getAll()
                 })
             }

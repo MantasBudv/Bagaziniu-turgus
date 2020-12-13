@@ -7,18 +7,14 @@
         <b-collapse id="nav-collapse" is-nav>
             
             <b-navbar-nav class="ml-auto">
-                <b-nav-form @submit.prevent="onSearch">
-                    <b-form-input size="sm" class="mr-sm-2" placeholder="Ieškoti..."></b-form-input>
-                    <b-button size="sm" class="mr-sm-2" type="submit"><b-icon icon="search"></b-icon></b-button>
-                </b-nav-form>
                 <b-nav-item to="/">
                     <b-icon id="home" icon="house" aria-hidden="true"></b-icon>
                     <b-tooltip target="home" triggers="hover">
                         Namai
                     </b-tooltip>
                 </b-nav-item>
-                <b-nav-item v-if="!loggedIn" to="/registracija">Registracija</b-nav-item>
                 <b-nav-item v-if="!loggedIn" to="/prisijungimas">Prisijungti</b-nav-item>
+                <b-nav-item v-if="!loggedIn" to="/registracija">Registracija</b-nav-item>
                 <b-nav-item v-if="loggedIn && !isAdmin" to="/krepselis">
                     <b-icon id="cart" icon="cart3" aria-hidden="true"></b-icon>
                     <b-badge v-if="cartItems" variant="light">{{ cartItems }}</b-badge>
@@ -42,6 +38,12 @@
                     <b-icon id="add" icon="plus-circle-fill" aria-hidden="true"></b-icon>
                     <b-tooltip target="add" triggers="hover">
                         Pridėti prekę
+                    </b-tooltip>
+                </b-nav-item>
+                <b-nav-item v-if="loggedIn && isAdmin" to="/pridetiBuda">
+                    <b-icon id="addB" icon="cash" aria-hidden="true"></b-icon>
+                    <b-tooltip target="addB" triggers="hover">
+                        Pridėti mokėjimo būdą
                     </b-tooltip>
                 </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" to="/nuolaidos">
@@ -71,11 +73,9 @@
 export default {
   name: 'Header',
   methods: {
-      onSearch () {
-          this.cartItems++
-      },
       logout () {
           this.$store.state.loggedIn = false
+          this.$store.state.user = {}
           this.$router.push('/')
       }
   },
@@ -84,7 +84,7 @@ export default {
           return this.$store.state.loggedIn
       },
       cartItems () {
-          return this.$store.state.cart.length
+          return this.$store.getters.getCartItemsCount
       },
       isAdmin () {
           if (this.$store.state.user.adminId == 0) {

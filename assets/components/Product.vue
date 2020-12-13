@@ -7,7 +7,7 @@
         </b-list-group>
         <div class="flex-row">
             <input type="button" value="Aprašymas" @click="onAbout">
-            <input type="button" value="Pirkti" v-if="!isAdmin">
+            <input type="button" value="Pirkti" v-if="!isAdmin" @click="addToCart">
             <input type="button" value="Redaguoti" v-if="isAdmin" @click="onEdit">
             <input type="button" value="Šalinti" v-if="isAdmin" @click="onDelete(product.id)">
         </div>
@@ -40,6 +40,9 @@ export default {
             axios.delete(`/prekes/trinti/${id}`).then((res) => {
             this.$router.push({path: `/`})
             })    
+        },
+        addToCart () {
+          this.$store.commit('addToCart', this.product.id)
         }
     }
 }
