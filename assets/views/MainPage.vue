@@ -55,8 +55,12 @@ export default {
       }
     },
     allProducts () {
+      console.log(this.$store.getters.getProducts)
       return this.$store.getters.getProducts
     }
+  },
+  mounted () {
+    this.products = this.$store.getters.getProducts
   },
   watch: {
     allProducts () {

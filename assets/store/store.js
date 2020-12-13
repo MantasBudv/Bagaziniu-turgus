@@ -22,7 +22,34 @@ export const store = new Vuex.Store({
     },
     getters: {
         getProducts (state) {
-            return state.products
+            let products = state.products
+            if (state.filters.fromY !== '') {
+                products = products.filter(item => Number(item.dateAdded.substring(0,4)) >= Number(state.filters.fromY))
+            }
+            if (state.filters.toY !== '') {
+                if (Number(state.filters.fromY) <= Number(state.filters.toY)) {
+                    if (state.filters.toY.length == 4) {
+                        products = products.filter(item => Number(item.dateAdded.substring(0,4)) <= Number(state.filters.toY))
+                    }
+                }
+            }
+            if (state.filters.fromPrice !== null) {
+                products = products.filter(item => item.price >= Number(state.filters.fromPrice))
+            }
+            if (state.filters.toPrice !== null) {
+                if (state.filters.fromPrice !== null) {
+                    if (Number(state.filters.fromPrice) <= Number(state.filters.toPrice)) {
+                        products = products.filter(item => item.price <= Number(state.filters.toPrice))
+                    }
+                }
+            }
+            if (state.filters.country !== '') {
+                products = products.filter(item => item.countryOfOrigin.toLowerCase().includes(state.filters.country.toLowerCase()))
+            }
+            if (state.filters.name !== '') {
+                products = products.filter(item => item.name.toLowerCase().includes(state.filters.name.toLowerCase()))
+            }
+            return products
         }
     },
     mutations: {

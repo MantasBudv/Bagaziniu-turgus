@@ -62,6 +62,26 @@ export default {
             country: '',
             name: ''
         }
+    },
+    watch: {
+        fromY (val, oldVal) { 
+            this.$store.state.filters.fromY = val
+        },
+        toY (val, oldVal) { 
+            this.$store.state.filters.toY = val
+        },
+        fromPrice (val, oldVal) { 
+            this.$store.state.filters.fromPrice = val
+        },
+        toPrice (val, oldVal) { 
+            this.$store.state.filters.toPrice = val
+        },
+        country (val, oldVal) { 
+            this.$store.state.filters.country = val
+        },
+        name (val, oldVal) { 
+            this.$store.state.filters.name = val
+        }
     }
 }
 </script>
