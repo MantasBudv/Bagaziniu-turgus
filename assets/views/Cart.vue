@@ -29,6 +29,13 @@
     <h3 v-if="products.length != 0">
         Prekių suma: {{ sum }} €
     </h3>
+    <h3 v-if="products.length != 0">
+        Prekių suma pritaikius mokesčius ir nuolaidos kodą:
+    </h3>
+    <h3 v-if="products.length != 0">
+        {{ totalSum }} €
+    </h3>
+    
     <b-button v-if="products.length != 0" variant="dark" @click="onBuy">Apmokėti</b-button>
     <h1 v-if="products.length == 0">Prekių krepšelyje nėra!</h1>
   </div>
@@ -48,12 +55,20 @@ export default {
     },
     sum () {
         let sum = 0
+        this.products.forEach((item) => {
+            sum += item.price
+        })
+        return sum
+    },
+    totalSum () {
+        let sum = 0
         let discount = 0
         let type = ''
         let sutampa = false
         this.products.forEach((item) => {
-            sum += item.price
+            sum += item.price 
         })
+        sum = sum * 1.21
         this.coupons.forEach((item) => {
             if (item.name == this.couponName) {
                 sutampa = true
@@ -71,7 +86,7 @@ export default {
                 discount = sum * discount / 100
             }
         }
-        return sum - discount
+        return (sum - discount).toFixed(2)
     },
     coupons () {
         return this.$store.state.coupons
@@ -80,7 +95,7 @@ export default {
   methods: {
     onBuy () {
         axios.post(`/pirkti`, {
-            sum: this.sum,
+            sum: this.totalSum,
         }).then((res) => {
             this.products.forEach((item) => {
                 this.$store.commit('removeCartItem', item.id)
