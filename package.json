@@ -18,6 +18,7 @@
         "bootstrap": "^4.5.3",
         "bootstrap-vue": "^2.18.1",
         "node-sass": "^4.14.1",
+        "pdfmake": "^0.1.68",
         "sass-loader": "^9.0.1",
         "vue": "^2.6.12",
         "vue-loader": "^15.9.5",

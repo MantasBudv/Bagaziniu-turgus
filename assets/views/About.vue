@@ -26,7 +26,7 @@
             </table>
             
             <p class="bigger">{{product.price}} €</p>
-            <b-button variant="dark" @click="addToCart"><b-icon id="profile" icon="plus" aria-hidden="true"></b-icon> Pridėti į krepšelį</b-button>
+            <b-button v-if="this.$store.state.user.adminId == 0" variant="dark" @click="addToCart"><b-icon id="profile" icon="plus" aria-hidden="true"></b-icon> Pridėti į krepšelį</b-button>
         </div>
   </div>
 </template>
@@ -46,15 +46,12 @@ export default {
       }
   },
   mounted () {
-    //   axios.post({path: `/gautiProdukta/${this.$route.params.id}`}).then((res)=>{
-
-  axios.get('/gautiProdukta', {
-    params: {
-        id: this.$route.params.id
-    }}).then((res)=>{
-        this.product = res.data
-        console.log(this.product)
-      })
+    axios.get('/gautiProdukta', {
+        params: {
+            id: this.$route.params.id
+        }}).then((res)=>{
+            this.product = res.data
+        })
   }
 }
 </script>
