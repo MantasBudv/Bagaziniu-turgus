@@ -1,6 +1,6 @@
 <template>
     <b-card :title="product.name" tag="article" class="product text-center">
-        <img src="build/images/catbowl.jpg" />
+        <img src="images/catbowl.jpg" />
         <b-card-text>{{product.shortDescription}}</b-card-text>
         <b-list-group flush>
             <b-list-group-item class="price">{{product.price}} €</b-list-group-item>
