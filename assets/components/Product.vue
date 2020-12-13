@@ -9,7 +9,7 @@
             <input type="button" value="Aprašymas" @click="onAbout">
             <input type="button" value="Pirkti" v-if="!isAdmin">
             <input type="button" value="Redaguoti" v-if="isAdmin" @click="onEdit">
-            <input type="button" value="Šalinti" v-if="isAdmin" @click="onDelete($product.id)">
+            <input type="button" value="Šalinti" v-if="isAdmin" @click="onDelete(product.id)">
         </div>
     </b-card>
 </template>
@@ -36,8 +36,10 @@ export default {
         onEdit () {
             this.$router.push({path: `/redagavimas/${this.product.id}`})
         },
-        onDelete () {
-
+        onDelete (id) {
+            axios.delete(`/prekes/trinti/${id}`).then((res) => {
+            this.$router.push({path: `/`})
+            })    
         }
     }
 }
