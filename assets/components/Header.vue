@@ -52,6 +52,13 @@
                         Pridėti mokėjimo būdą
                     </b-tooltip>
                 </b-nav-item>
+                 </b-nav-item>
+                <b-nav-item v-if="loggedIn && isAdmin" @click="getProductReport">
+                    <b-icon id="addB" icon="card-list" aria-hidden="true"></b-icon>
+                    <b-tooltip target="addB" triggers="hover">
+                        Generuoti prekių ataskaitą
+                    </b-tooltip>
+                </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" to="/nuolaidos">
                     <b-icon id="discount" icon="server" aria-hidden="true"></b-icon>
                     <b-tooltip target="discount" triggers="hover">
@@ -76,6 +83,8 @@
 </template>
 
 <script>
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 export default {
   name: 'Header',
   methods: {
@@ -86,6 +95,37 @@ export default {
       },
       getNewspaper () {
        
+      },
+      getProductReport() {
+        axios.get('/produktai/visi').then((res) => {
+            var body =  [];
+            console.log(res.data);
+            pdfMake.vfs = pdfFonts.pdfMake.vfs;
+            body.push([ 'Nr', 'Pavadinimas', 'Pridėjimo data', 'Gamintojas', 'Kilmės šalis', 'Kaina', 'Kiekis']);
+            res.data.forEach((item) => {
+                body.push([item.id,item.name,item.dateAdded.substring(0,10)
+                ,item.manufacturer,item.countryOfOrigin,item.price + "€",item.quantity]);
+             })
+            var docDefinition = {
+                                    content: 
+                                    [
+
+                                        {text: "Prekių ataskaita:\n\n", fontSize:20},
+                                        {
+                                        layout: 'lightHorizontalLines', // optional
+                                        table: {
+                                            // headers are automatically repeated if the table spans over multiple pages
+                                            // you can declare how many rows should be treated as headers
+                                            headerRows: 1,
+                                            widths: [ 20, 100, 70, 70,70, 70, 40, 40],
+                                            body: body,
+                                            
+                                        }, fontSize:11
+                                        }
+                                    ]
+                                };
+            pdfMake.createPdf(docDefinition).download('Produktai.pdf'); 
+        })
       }
   },
   computed: {
