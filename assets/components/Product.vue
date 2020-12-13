@@ -38,7 +38,12 @@ export default {
         },
         onDelete (id) {
             axios.delete(`/prekes/trinti/${id}`).then((res) => {
-            this.$router.push({path: `/`})
+                axios.get('/produktai/visi').then((res)=>{
+                    res.data.forEach((item) => {
+                        item.inCart = 0
+                    })
+                    this.$store.state.products = res.data
+                })
             })    
         },
         addToCart () {
