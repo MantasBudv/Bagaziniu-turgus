@@ -11,13 +11,15 @@
             <p>{{ order.creationDate }}</p> 
             <p>{{ order.total }}</p> 
             <p>{{ order.status }}</p>
-            <p><b-button @click="onGenerate(order.name)" variant="dark" class="ml-auto">Generuoti sąskaitą</b-button></p> 
+            <p><b-button @click="onGenerate(order.name,order.id)" variant="dark" class="ml-auto">Generuoti sąskaitą</b-button></p> 
         </div>
     </div>
   </div>
 </template>
 
 <script>
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 export default {
   name: 'Coupons',
   data () {
@@ -26,8 +28,25 @@ export default {
       }
   },
   methods: {
-      onGenerate () {
-            
+      onGenerate (name,index) {
+        axios.get('/mokejimai/gautisaskaita', {
+            params: {
+                id: index
+        }}).then((res) => {
+            console.log(res.data);
+            pdfMake.vfs = pdfFonts.pdfMake.vfs;
+            var docDefinition = {
+                content: [
+                    // using a { text: '...' } object lets you set styling properties
+                    {text: 'Sąskaita\n\n', fontSize: 20 },
+                    { text: '', fontSize: 20 },
+                    {text: 'Užsakymo numeris: ' + index},
+                    {text: 'Užsakymo kaina: ' + res.data.total + "€"},
+                    {text: 'Užsakymo data: ' + res.data.creationDate.substring(0,10)}
+                ]
+            };
+            pdfMake.createPdf(docDefinition).download('Saskaita_'+index+'.pdf');  
+        })
       }
   },
   mounted () {

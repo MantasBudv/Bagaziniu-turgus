@@ -40,4 +40,13 @@ class OrderController extends AbstractController
         $entityManager->flush();
         return new Response(200);
     }
+    /**
+     * @Route("/mokejimai/gautisaskaita", methods="GET")
+     */
+    public function getOrder (Request $request)
+    {
+        $order = $this->getDoctrine()->getRepository(Order::class)->find($request->get('id'));
+        $json = $this->get("serializer")->serialize($order, 'json');
+        return new JsonResponse($json, 200, [], true);
+    }
 }
