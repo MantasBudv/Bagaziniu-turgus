@@ -40,9 +40,12 @@
 
       <b-button type="submit" variant="dark" class="ml-auto" v-if="disabledFields">Redaguoti</b-button>
       <b-button type="submit" variant="dark" class="ml-auto" v-if="!disabledFields">Išsaugoti</b-button>
+      <b-button @click="onProfileDelete" variant="dark" class="ml-auto margin-top" v-if="disabledFields">Ištrinti profilį</b-button>
     </b-form>
   </div>
+
 </template>
+
 
 <script>
 export default {
@@ -56,18 +59,38 @@ export default {
   },
   methods: {
     onSubmit () {
-        if (this.disabledFields) {
-            this.disabledFields = false
-        } else {
-            if (this.user.password === this.confirmPassword) {
-                // Change user data
-                this.confirmPassword = ''
-                this.disabledFields = true
-            } else {
-                alert('Slaptažodžiai nesutampa')
-            }
-        }
-    }
+      if (this.disabledFields) {
+        this.disabledFields = false
+      } else {
+          if (this.user.password === this.confirmPassword) {
+              axios.post(`/klientai/redaguoti`,{'id': this.$store.state.user.id, 'name':this.user.name,'surname':this.user.surname,'email':this.user.email,'phone':this.user.phone,'password':this.user.password}).then((res) => {
+                this.$store.state.loggedIn = false
+                this.$store.state.user = res.data.user
+                alert('Sekmingai pakoreguotas')
+              }).catch((err)=>{
+                  alert("Nepavyko pakeisti duomenu")
+                })
+              this.confirmPassword = ''
+              this.disabledFields = true
+          } else {
+              alert('Slaptažodžiai nesutampa')
+          }
+      }
+    },
+    onProfileDelete () {
+        axios.delete(`/klientai/trinti/${this.$store.state.user.id}`).then((res) => {
+            this.$store.state.loggedIn = false
+            this.$store.state.user = {}
+            this.$router.push({path: `/`})
+        }).catch((err)=>{
+                  alert("Nepavyko pakeisti duomenu")
+                })
+            
+      },
+    
+    onProfileEdit () {
+        
+    } 
   },
   created () {
         this.user = this.$store.state.user
@@ -94,5 +117,8 @@ form {
     flex-direction: column;
     width: 50%;
     margin: 0 auto;
+}
+.margin-top{
+  margin-top: 10px;
 }
 </style>

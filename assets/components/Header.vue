@@ -17,6 +17,7 @@
                         Namai
                     </b-tooltip>
                 </b-nav-item>
+                <b-nav-item v-if="!loggedIn" to="/registracija">Registracija</b-nav-item>
                 <b-nav-item v-if="!loggedIn" to="/prisijungimas">Prisijungti</b-nav-item>
                 <b-nav-item v-if="loggedIn && !isAdmin" to="/krepselis">
                     <b-icon id="cart" icon="cart3" aria-hidden="true"></b-icon>
@@ -80,7 +81,7 @@ export default {
           return this.$store.state.cart.length
       },
       isAdmin () {
-          if (this.$store.state.user.admin_id == 0) {
+          if (this.$store.state.user.adminId == 0) {
             return false
           } else {
             return true

@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     isAdmin () {
-      if (this.$store.state.user.admin_id == 0) {
+      if (this.$store.state.user.adminId == 0) {
         return false
       } else {
         return true

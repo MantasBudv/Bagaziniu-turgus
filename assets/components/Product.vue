@@ -24,7 +24,7 @@ export default {
             return this.$store.state.product
         },
         isAdmin () {
-            if (this.$store.state.user.admin_id == 0) {
+            if (this.$store.state.user.adminId == 0 || this.$store.state.loggedIn == false) {
                 return false
             } else {
                 return true

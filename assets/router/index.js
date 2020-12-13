@@ -5,6 +5,7 @@ import MainPage from '../views/MainPage.vue';
 import Upload from '../views/Upload.vue'
 import Profile from '../views/Profile.vue'
 import Login from '../views/Login.vue'
+import Register from '../views/Register.vue'
 import About from '../views/About.vue'
 import Cart from '../views/Cart.vue'
 import AddProduct from '../views/AddProduct.vue'
@@ -27,6 +28,11 @@ export default new VueRouter({
       path: '/prisijungimas',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/registracija',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/ikelti',

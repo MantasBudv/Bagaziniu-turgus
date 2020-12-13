@@ -14,6 +14,31 @@
         </b-input-group>
       </b-form-group>
 
+      <b-form-group label="Vardas:" label-size="lg">
+        <b-input-group size="lg">
+          <b-form-input v-model="name" required placeholder="Vardas" maxlength="50"></b-form-input>
+        </b-input-group>
+      </b-form-group>
+
+      <b-form-group label="Pavardė:" label-size="lg">
+        <b-input-group size="lg">
+          <b-form-input v-model="surname" required placeholder="Pavardė" maxlength="50"></b-form-input>
+        </b-input-group>
+      </b-form-group>
+
+      <b-form-group label="Telefono numeris:" label-size="lg">
+        <b-input-group size="lg">
+          <b-form-input v-model="phone" required placeholder="Telefono numeris" maxlength="50"></b-form-input>
+        </b-input-group>
+      </b-form-group>
+
+      <b-form-group label="El. paštas:" label-size="lg">
+        <b-input-group size="lg">
+          <b-form-input v-model="email" required placeholder="El. paštas" maxlength="50"></b-form-input>
+        </b-input-group>
+      </b-form-group>
+
+    
       <b-button type="submit" variant="dark" class="ml-auto">Prisijungti</b-button>
     </b-form>
   </div>
@@ -21,7 +46,7 @@
 
 <script>
 export default {
-  name: 'Login',
+  name: 'Register',
   data () {
       return {
           username: '',
@@ -30,12 +55,13 @@ export default {
   },
   methods: {
     onSubmit () {
-      axios.post(`/prisijungimas`,{'username':this.username,'password':this.password}).then((res) => {
+      axios.post(`/registracija`,{'username':this.username,'password':this.password}).then((res) => {
         this.$store.state.loggedIn = true
         this.$store.state.user = res.data.user
-        console.log(this.$store.state.user)
         this.$router.push({path: `/`})
       }).catch((err)=>{
+        console.log(this.username)
+        console.log(this.password)
         alert("Neteisingi prisijungimo duomenys")
       })
     }
