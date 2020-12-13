@@ -34,6 +34,12 @@
                         Uzsakymai
                     </b-tooltip>
                 </b-nav-item>
+                <b-nav-item v-if="loggedIn && !isAdmin" @click="getNewspaper">
+                    <b-icon id="newspaper" icon="newspaper" aria-hidden="true"></b-icon>
+                    <b-tooltip target="newspaper" triggers="hover">
+                        Gauti naujienlaiškį
+                    </b-tooltip>
+                </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" to="/prideti">
                     <b-icon id="add" icon="plus-circle-fill" aria-hidden="true"></b-icon>
                     <b-tooltip target="add" triggers="hover">
@@ -77,6 +83,9 @@ export default {
           this.$store.state.loggedIn = false
           this.$store.state.user = {}
           this.$router.push('/')
+      },
+      getNewspaper () {
+       
       }
   },
   computed: {
