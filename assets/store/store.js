@@ -5,12 +5,25 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-        user: {
-        },
+        user: {},
         loggedIn: false,
         cart: [
             [1, 1]
-        ]
+        ],
+        products: [],
+        filters: {
+            fromY: '',
+            toY: '',
+            fromPrice: null,
+            toPrice: null,
+            country: '',
+            name: ''
+        }
+    },
+    getters: {
+        getProducts (state) {
+            return state.products
+        }
     },
     mutations: {
         addToCart(state, id) {

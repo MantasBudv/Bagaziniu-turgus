@@ -44,7 +44,6 @@ export default {
       }).then(res=>{
         alert('Žinutė išsiųsta')
       })
-
     }
   },
   computed: {
@@ -54,13 +53,15 @@ export default {
       } else {
         return true
       }
+    },
+    allProducts () {
+      return this.$store.getters.getProducts
     }
   },
-  mounted () {
-    axios.get('/produktai/visi').then((res)=>{
-          this.products = res.data
-          console.log(res.data)
-      })
+  watch: {
+    allProducts () {
+      this.products = this.allProducts
+    }
   }
 }
 </script>

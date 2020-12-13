@@ -12,7 +12,12 @@ import Header from './components/Header.vue'
 
 export default {
   name: 'App',
-  components: { Header }
+  components: { Header },
+  mounted () {
+    axios.get('/produktai/visi').then((res)=>{
+      this.$store.state.products = res.data
+    })
+  }
 }
 </script>
 
