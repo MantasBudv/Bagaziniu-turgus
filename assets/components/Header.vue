@@ -17,8 +17,8 @@
                         Namai
                     </b-tooltip>
                 </b-nav-item>
-                <b-nav-item v-if="!loggedIn" to="/registracija">Registracija</b-nav-item>
                 <b-nav-item v-if="!loggedIn" to="/prisijungimas">Prisijungti</b-nav-item>
+                <b-nav-item v-if="!loggedIn" to="/registracija">Registracija</b-nav-item>
                 <b-nav-item v-if="loggedIn && !isAdmin" to="/krepselis">
                     <b-icon id="cart" icon="cart3" aria-hidden="true"></b-icon>
                     <b-badge v-if="cartItems" variant="light">{{ cartItems }}</b-badge>

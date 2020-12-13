@@ -94,4 +94,27 @@ class UserController extends AbstractController
         $response->setStatusCode(200);
         return $response;
     }
+    /**
+     * @Route("/registracija", methods="POST")
+     */
+    public function register(Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $response = new Response();
+        $data = $request->getContent();
+        $data = json_decode($data, true);
+
+        $product = new User();
+        $product->setName($data['name']);
+        $product->setSurname($data['surname']);
+        $product->setUsername($data['username']);
+        $product->setEmail($data['email']);
+        $product->setPhone($data['phone']);
+        $product->setPassword($data['password']);
+        $product->setAdminId(0);
+        $entityManager->persist($product);
+        $entityManager->flush();
+        $response->setStatusCode(200);
+        return $response;
+    }
 }
