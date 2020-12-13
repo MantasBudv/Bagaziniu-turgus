@@ -9,6 +9,7 @@ use App\Entity\Product;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class ProductController extends AbstractController
 {
@@ -66,13 +67,37 @@ class ProductController extends AbstractController
     }
 
     /**
-    * @Route("/produktai/trinti/{id}", methods="DELETE")
-    * @param $request
+    * @Route("/preke/sukurti", methods="POST")
     */
+    public function addProduct(Request $request): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $data = $request->getContent();
+        $data = json_decode($data, true);
+
+        $product = new Product();
+        $product->setName($data['name']);
+        $product->setFullDescription($data['fullDescription']);
+        $product->setShortDescription($data['shortDescription']);
+        $product->setPrice($data['price']);
+        $product->setManufacturer($data['manufacturer']);
+        $product->setCountryOfOrigin($data['countryOfOrigin']);
+        $product->setQuantity($data['quantity']);
+        $product->setDateAdded(new \DateTime("now"));
+        $entityManager->persist($product);
+        $entityManager->flush();
+        return new Response(200);
+    }
+
+    /**
+     * @Route("/preke/trinti/{id}", methods="DELETE")
+     * @param $request
+     */
     public function delete($id)
     {
         $repository = $this->getDoctrine()->getRepository(Product::class);
-        $product = $repository->find(id);
+        $product = $repository->find($id);
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($product);
         $entityManager->flush();
