@@ -61,6 +61,12 @@ class User
     {
         return $this->admin_id;
     }
+    public function setAdminId(int $admin_id): self
+    {
+        $this->admin_id = $admin_id;
+
+        return $this;
+    }
     
     public function getName(): ?string
     {

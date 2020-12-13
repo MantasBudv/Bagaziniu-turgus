@@ -39,7 +39,7 @@
       </b-form-group>
 
     
-      <b-button type="submit" variant="dark" class="ml-auto">Prisijungti</b-button>
+      <b-button type="submit" variant="dark" class="ml-auto">Registruotis</b-button>
     </b-form>
   </div>
 </template>
@@ -50,18 +50,28 @@ export default {
   data () {
       return {
           username: '',
+          password: '',
+          name: '',
+          surname: '',
+          email: '',
+          phone: '',
           password: ''
       }
   },
   methods: {
     onSubmit () {
-      axios.post(`/registracija`,{'username':this.username,'password':this.password}).then((res) => {
-        this.$store.state.loggedIn = true
-        this.$store.state.user = res.data.user
-        this.$router.push({path: `/`})
+      axios.post(`/registracija`,{
+          'username':this.username,
+           'name':this.name,
+           'surname':this.surname,
+           'email':this.email,
+           'phone':this.phone,
+           'password':this.password
+           }).then((res) => {
+        console.log("Priregistruota!");
+        this.$router.push('/prisijungimas')
       }).catch((err)=>{
-        console.log(this.username)
-        console.log(this.password)
+        console.log("Nepriregistruota")
         alert("Neteisingi prisijungimo duomenys")
       })
     }
