@@ -7,10 +7,6 @@
         <b-collapse id="nav-collapse" is-nav>
             
             <b-navbar-nav class="ml-auto">
-                <b-nav-form @submit.prevent="onSearch">
-                    <b-form-input size="sm" class="mr-sm-2" placeholder="Ieškoti..."></b-form-input>
-                    <b-button size="sm" class="mr-sm-2" type="submit"><b-icon icon="search"></b-icon></b-button>
-                </b-nav-form>
                 <b-nav-item to="/">
                     <b-icon id="home" icon="house" aria-hidden="true"></b-icon>
                     <b-tooltip target="home" triggers="hover">
@@ -77,11 +73,9 @@
 export default {
   name: 'Header',
   methods: {
-      onSearch () {
-          this.cartItems++
-      },
       logout () {
           this.$store.state.loggedIn = false
+          this.$store.state.user = {}
           this.$router.push('/')
       }
   },
@@ -90,7 +84,7 @@ export default {
           return this.$store.state.loggedIn
       },
       cartItems () {
-          return this.$store.state.cart.length
+          return this.$store.getters.getCartItemsCount
       },
       isAdmin () {
           if (this.$store.state.user.adminId == 0) {

@@ -17,7 +17,8 @@ import Orders from '../views/Orders.vue'
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+
+const router = new VueRouter({
   mode: 'history',
   routes:[
     {
@@ -86,4 +87,6 @@ export default new VueRouter({
       component: Orders
     }
   ]
-});
+})
+
+export default router

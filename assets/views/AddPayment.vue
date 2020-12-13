@@ -27,7 +27,6 @@ export default {
         'name': this.product.name
       }).then((res)=>{
       this.product = res.data
-      console.log(this.product)
       })
       this.$router.push('/')
     }

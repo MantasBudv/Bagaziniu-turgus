@@ -68,10 +68,8 @@ export default {
            'phone':this.phone,
            'password':this.password
            }).then((res) => {
-        console.log("Priregistruota!");
         this.$router.push('/prisijungimas')
       }).catch((err)=>{
-        console.log("Nepriregistruota")
         alert("Neteisingi prisijungimo duomenys")
       })
     }

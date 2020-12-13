@@ -59,7 +59,6 @@ export default {
   },
   methods: {
     onSubmit () {
-      console.log("krw")
       axios.post('/preke/sukurti', {
         'name': this.product.name,
         'fullDescription': this.product.fullDescription,
@@ -70,7 +69,6 @@ export default {
         'quantity': this.product.quantity
       }).then((res)=>{
       this.product = res.data
-      console.log(this.product)
       })
       this.$router.push('/')
     }
