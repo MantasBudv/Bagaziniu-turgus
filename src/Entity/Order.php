@@ -19,12 +19,12 @@ class Order
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $status;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $creation_date;
 
@@ -34,7 +34,7 @@ class Order
     private $total;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="string", length=255)
      */
     private $expiration_date;
 
@@ -43,12 +43,12 @@ class Order
         return $this->id;
     }
 
-    public function getStatus(): ?int
+    public function getStatus(): ?string
     {
         return $this->status;
     }
 
-    public function setStatus(int $status): self
+    public function setStatus(string $status): self
     {
         $this->status = $status;
 
@@ -79,12 +79,12 @@ class Order
         return $this;
     }
 
-    public function getExpirationDate(): ?\DateTimeInterface
+    public function getExpirationDate(): ?string
     {
         return $this->expiration_date;
     }
 
-    public function setExpirationDate(\DateTimeInterface $expiration_date): self
+    public function setExpirationDate(string $expiration_date): self
     {
         $this->expiration_date = $expiration_date;
 

@@ -2,19 +2,11 @@
   <div class="background-color">
     <Filters />
     <div class="content">
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
-      <Product />
+      <Product v-for="(product, index) in products" :key="index" :product="product"/>
     </div>
     <div class="support" v-if="!isAdmin">
        <b-icon icon="question-circle-fill" animation="spin" v-b-modal.my-modal font-scale="2" ></b-icon>
-    
+
     <b-modal id="my-modal" hide-footer>
     <template #modal-title>
       <h2>Pagalba</h2>
@@ -29,7 +21,7 @@
       </b-form>
       </b-modal>
   </div></div>
-  
+
 </template>
 
 <script>
@@ -40,14 +32,19 @@ export default {
   components: { Filters, Product },
   data () {
     return {
-      supportMessage: ''
+      supportMessage: '',
+      products: []
     }
   },
   methods: {
     onSubmit () {
-      // send message
-      alert('Žinutė išsiųsta')
-      this.supportMessage = ''
+      axios.post("/support/request/naujas", {
+        "username":this.$store.state.user.username,
+        "message":this.supportMessage
+      }).then(res=>{
+        alert('Žinutė išsiųsta')
+      })
+
     }
   },
   computed: {
@@ -58,6 +55,12 @@ export default {
         return true
       }
     }
+  },
+  mounted () {
+    axios.get('/produktai/visi').then((res)=>{
+          this.products = res.data
+          console.log(res.data)
+      })
   }
 }
 </script>

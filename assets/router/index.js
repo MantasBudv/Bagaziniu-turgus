@@ -12,7 +12,7 @@ import AddProduct from '../views/AddProduct.vue'
 import Edit from '../views/Edit.vue'
 import Coupons from '../views/Coupons.vue'
 import Questions from '../views/Questions.vue'
-
+import Orders from '../views/Orders.vue'
 
 Vue.use(VueRouter);
 
@@ -73,6 +73,11 @@ export default new VueRouter({
       path: '/profilis',
       name: 'Profile',
       component: Profile
+    },
+    {
+      path: '/uzsakymai',
+      name: 'Orders',
+      component: Orders
     }
   ]
 });
