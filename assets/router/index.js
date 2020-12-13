@@ -69,7 +69,7 @@ export default new VueRouter({
       component: Profile
     },
     {
-      path: '/istorija',
+      path: '/uzsakymai',
       name: 'Orders',
       component: Orders
     }

@@ -11,7 +11,7 @@
                     <b-form-input size="sm" class="mr-sm-2" placeholder="Ieškoti..."></b-form-input>
                     <b-button size="sm" class="mr-sm-2" type="submit"><b-icon icon="search"></b-icon></b-button>
                 </b-nav-form>
-                                <b-nav-item to="/">
+                <b-nav-item to="/">
                     <b-icon id="home" icon="house" aria-hidden="true"></b-icon>
                     <b-tooltip target="home" triggers="hover">
                         Namai
@@ -29,6 +29,12 @@
                     <b-icon id="profile" icon="person" aria-hidden="true"></b-icon>
                     <b-tooltip target="profile" triggers="hover">
                         Profilis
+                    </b-tooltip>
+                </b-nav-item>
+                <b-nav-item v-if="loggedIn && !isAdmin" to="/uzsakymai">
+                    <b-icon id="journal" icon="journal" aria-hidden="true"></b-icon>
+                    <b-tooltip target="journal" triggers="hover">
+                        Uzsakymai
                     </b-tooltip>
                 </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" to="/prideti">
