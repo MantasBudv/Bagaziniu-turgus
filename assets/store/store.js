@@ -41,6 +41,8 @@ export const store = new Vuex.Store({
                     if (Number(state.filters.fromPrice) <= Number(state.filters.toPrice)) {
                         products = products.filter(item => item.price <= Number(state.filters.toPrice))
                     }
+                } else {
+                    products = products.filter(item => item.price <= Number(state.filters.toPrice))
                 }
             }
             if (state.filters.country !== '') {
