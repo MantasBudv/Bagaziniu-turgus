@@ -30,7 +30,7 @@ class SupportRequest
     /**
      * @ORM\Column(type="integer")
      */
-    private $status;
+    private $status = 1;
 
     public function getId(): ?int
     {

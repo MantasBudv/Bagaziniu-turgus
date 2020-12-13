@@ -9,6 +9,7 @@ import Register from '../views/Register.vue'
 import About from '../views/About.vue'
 import Cart from '../views/Cart.vue'
 import AddProduct from '../views/AddProduct.vue'
+import AddPayment from '../views/AddPayment.vue'
 import Edit from '../views/Edit.vue'
 import Coupons from '../views/Coupons.vue'
 import Questions from '../views/Questions.vue'
@@ -63,6 +64,11 @@ export default new VueRouter({
       path: '/prideti',
       name: 'AddProduct',
       component: AddProduct
+    },
+    {
+      path: '/pridetiBuda',
+      name: 'AddPayment',
+      component: AddPayment
     },
     {
       path: '/krepselis',

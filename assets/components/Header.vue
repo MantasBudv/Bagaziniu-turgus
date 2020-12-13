@@ -44,6 +44,12 @@
                         Pridėti prekę
                     </b-tooltip>
                 </b-nav-item>
+                <b-nav-item v-if="loggedIn && isAdmin" to="/pridetiBuda">
+                    <b-icon id="addB" icon="cash" aria-hidden="true"></b-icon>
+                    <b-tooltip target="addB" triggers="hover">
+                        Pridėti mokėjimo būdą
+                    </b-tooltip>
+                </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" to="/nuolaidos">
                     <b-icon id="discount" icon="server" aria-hidden="true"></b-icon>
                     <b-tooltip target="discount" triggers="hover">
