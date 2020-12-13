@@ -52,7 +52,6 @@
                         Pridėti mokėjimo būdą
                     </b-tooltip>
                 </b-nav-item>
-                 </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" @click="getProductReport">
                     <b-icon id="addB" icon="card-list" aria-hidden="true"></b-icon>
                     <b-tooltip target="addB" triggers="hover">
@@ -67,6 +66,12 @@
                 </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" to="/klausimai">
                     <b-icon id="question" icon="question-circle-fill" aria-hidden="true"></b-icon>
+                    <b-tooltip target="question" triggers="hover">
+                        Klientų klausimai
+                    </b-tooltip>
+                </b-nav-item>
+                <b-nav-item v-if="loggedIn && isAdmin" to="/uzsakymu_red">
+                    <b-icon id="question" icon="bag-check" aria-hidden="true"></b-icon>
                     <b-tooltip target="question" triggers="hover">
                         Klientų klausimai
                     </b-tooltip>
@@ -94,7 +99,9 @@ export default {
           this.$router.push('/')
       },
       getNewspaper () {
-       
+        axios.post('/email').then((res) => {
+            console.log('wow')
+        })
       },
       getProductReport() {
         axios.get('/produktai/visi').then((res) => {
@@ -125,7 +132,7 @@ export default {
                                     ]
                                 };
             pdfMake.createPdf(docDefinition).download('Produktai.pdf'); 
-        })
+      });
       }
   },
   computed: {
