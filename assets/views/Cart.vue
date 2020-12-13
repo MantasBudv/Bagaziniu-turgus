@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <tr v-for="(product, index) in products" :key="index">
-                <td class="align-middle"><img id ="product_picture" src="/build/images/money.jpg" alt="Image"></td>
+                <td class="align-middle"><img id ="product_picture" src="/build/images/catbowl.jpg" alt="Image"></td>
                 <td class="align-middle">{{product.name}}</td>
                 <td class="align-middle">{{product.shortDescription}}</td>
                 <td class="align-middle bigger">{{product.price}} €</td>

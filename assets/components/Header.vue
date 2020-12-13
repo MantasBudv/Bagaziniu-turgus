@@ -85,7 +85,9 @@ export default {
           this.$router.push('/')
       },
       getNewspaper () {
-       
+        axios.post('/email').then((res) => {
+            console.log('wow')
+        })
       }
   },
   computed: {

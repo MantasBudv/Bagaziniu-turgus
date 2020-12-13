@@ -1,7 +1,7 @@
 <template>
   <div class="about">
         <div class="column">
-            <img id ="product_picture" src="/build/images/money.jpg" alt="Image">
+            <img id ="product_picture" src="/build/images/catbowl.jpg" alt="Image">
         </div>
         <div class="column">
             <p class="bigger">{{product.name}}</p>
