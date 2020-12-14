@@ -60,12 +60,13 @@ export default {
 
 <style lang='scss' scoped>
 .product {
-    
+    position: relative;
     flex-basis: 32%;
     margin-bottom: 2em;
     color: rgba(0,0,0,0.5);
     img {
         width: 100%;
+        height: 150px;
         margin-bottom: 0.5em;
     }
     input {
@@ -83,14 +84,17 @@ export default {
     .price {
         font-size: 1.5em;
         font-weight: 700;
+        margin-bottom: 20px;
         color: #000;
     }
 }
 .flex-row {
+    position: absolute;
     display: flex;
     flex-direction: row;
-    width: calc(100% + 2.5rem);
+    width: 100%;
     margin-left: -1.25rem;
+    bottom: 0;
 }
 .noHover{
     pointer-events: none;

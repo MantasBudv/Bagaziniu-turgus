@@ -53,8 +53,8 @@
                     </b-tooltip>
                 </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" @click="getProductReport">
-                    <b-icon id="addB" icon="card-list" aria-hidden="true"></b-icon>
-                    <b-tooltip target="addB" triggers="hover">
+                    <b-icon id="card-list" icon="card-list" aria-hidden="true"></b-icon>
+                    <b-tooltip target="card-list" triggers="hover">
                         Generuoti prekių ataskaitą
                     </b-tooltip>
                 </b-nav-item>
@@ -71,9 +71,9 @@
                     </b-tooltip>
                 </b-nav-item>
                 <b-nav-item v-if="loggedIn && isAdmin" to="/uzsakymu_red">
-                    <b-icon id="question" icon="bag-check" aria-hidden="true"></b-icon>
-                    <b-tooltip target="question" triggers="hover">
-                        Klientų klausimai
+                    <b-icon id="bag-check" icon="bag-check" aria-hidden="true"></b-icon>
+                    <b-tooltip target="bag-check" triggers="hover">
+                        Klientų užsakymų redagavimas
                     </b-tooltip>
                 </b-nav-item>
                 <b-nav-item v-if="loggedIn" @click="logout">

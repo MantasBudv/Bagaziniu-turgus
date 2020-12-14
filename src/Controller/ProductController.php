@@ -31,7 +31,10 @@ class ProductController extends AbstractController
     */
     public function getAllProducts()
     {
-        $products = $this->getDoctrine()->getRepository(Product::class)->findAll();
+        $products = $this->getDoctrine()->getRepository(Product::class)->findBy(
+            array(),
+            array('price' => 'DESC')
+        );
         $json = $this->get("serializer")->serialize($products, 'json');
         return new JsonResponse($json, 200, [], true);
     }
