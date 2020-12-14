@@ -65,6 +65,9 @@ export const store = new Vuex.Store({
         getCartItems (state) {
             return state.products.filter((item) => item.inCart == 1)
         },
+        getPaymentMethods(state) {
+            return state.paymentMethods
+        }
     },
     mutations: {
         addToCart(state, id) {

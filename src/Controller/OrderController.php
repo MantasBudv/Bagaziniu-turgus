@@ -36,6 +36,7 @@ class OrderController extends AbstractController
         $order->setTotal($data['sum']);
         $order->setCreationDate(new \DateTime("now"));
         $order->setUserId($data['user_id']);
+        $order->setPaymentMethod($data['payment_method']);
 
         $entityManager->persist($order);
         $entityManager->flush();

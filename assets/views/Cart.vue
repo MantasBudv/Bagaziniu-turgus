@@ -26,6 +26,14 @@
             <b-form-input type="text" v-model="couponName"></b-form-input>
         </b-input-group>
     </b-form-group>
+
+    <b-form-group v-if="products.length != 0" label="Pasirinkite apmokėjimo būdą:" label-size="md">
+        <b-input-group size="md">
+            <b-form-select v-model="selected" :options="options"></b-form-select>
+        </b-input-group>
+    </b-form-group>
+
+
     <h3 v-if="products.length != 0">
         Prekių suma: {{ sum }} €
     </h3>
@@ -46,7 +54,9 @@ export default {
   name: 'Cart',
   data () {
       return {
-          couponName: ''
+          couponName: '',
+          options: [],
+          selected: ''
       }
   },
   computed: {
@@ -96,7 +106,8 @@ export default {
     onBuy () {
         axios.post(`/pirkti`, {
             sum: this.totalSum,
-            user_id: this.$store.state.user.id
+            user_id: this.$store.state.user.id,
+            payment_method: this.selected
         }).then((res) => {
             this.products.forEach((item) => {
                 this.$store.commit('removeCartItem', item.id)
@@ -106,7 +117,16 @@ export default {
     onDelete (id) {
         this.$store.commit('removeCartItem', id)
     }
+  },
+  mounted() {
+    this.$store.getters.getPaymentMethods.forEach((item)=>{
+    let option = {}
+    option.value = item.id
+    option.text = item.name
+    this.options.push(option)
+    })
   }
+
 }
 </script>
 

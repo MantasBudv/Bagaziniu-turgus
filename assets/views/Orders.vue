@@ -34,6 +34,7 @@ export default {
                 id: index
         }}).then((res) => {
             pdfMake.vfs = pdfFonts.pdfMake.vfs;
+            var paymentm = this.$store.state.paymentMethods.filter((item) => item.id == res.data.paymentMethod)[0]
             var docDefinition = {
                 content: [
                     // using a { text: '...' } object lets you set styling properties
@@ -41,7 +42,8 @@ export default {
                     { text: '', fontSize: 20 },
                     {text: 'Užsakymo numeris: ' + index},
                     {text: 'Užsakymo kaina: ' + res.data.total + "€"},
-                    {text: 'Užsakymo data: ' + res.data.creationDate.substring(0,10)}
+                    {text: 'Užsakymo data: ' + res.data.creationDate.substring(0,10)},
+                    {text: 'Atsiskaitymo metodas: ' + paymentm.name}
                 ]
             };
             pdfMake.createPdf(docDefinition).download('Saskaita_'+index+'.pdf');  

@@ -56,7 +56,6 @@ export default {
         id: this.$route.params.id
     }}).then((res)=>{
         this.product = res.data
-        console.log(this.product)
       })
   }
 }

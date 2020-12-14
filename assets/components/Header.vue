@@ -100,13 +100,11 @@ export default {
       },
       getNewspaper () {
         axios.post('/email').then((res) => {
-            console.log('wow')
         })
       },
       getProductReport() {
         axios.get('/produktai/visi').then((res) => {
             var body =  [];
-            console.log(res.data);
             pdfMake.vfs = pdfFonts.pdfMake.vfs;
             body.push([ 'Nr', 'Pavadinimas', 'Pridėjimo data', 'Gamintojas', 'Kilmės šalis', 'Kaina', 'Kiekis']);
             res.data.forEach((item) => {
