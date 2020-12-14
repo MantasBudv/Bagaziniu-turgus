@@ -16,10 +16,10 @@ class OrderController extends AbstractController
     /**
      * @Route("/mokejimai/visi", methods="GET")
      */
-    public function index()
+    public function index(Request $request)
     {
-        $discounts = $this->getDoctrine()->getRepository(Order::class)->findAll();
-        $json = $this->get("serializer")->serialize($discounts, 'json');
+        $orders = $this->getDoctrine()->getRepository(Order::class)->findBy(['user_id' => $request->get('id')]);
+        $json = $this->get("serializer")->serialize($orders, 'json');
         return new JsonResponse($json, 200, [], true);
     }
     /**
@@ -35,6 +35,7 @@ class OrderController extends AbstractController
         $order = new Order();
         $order->setTotal($data['sum']);
         $order->setCreationDate(new \DateTime("now"));
+        $order->setUserId($data['user_id']);
 
         $entityManager->persist($order);
         $entityManager->flush();

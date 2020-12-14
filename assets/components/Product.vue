@@ -7,7 +7,8 @@
         </b-list-group>
         <div class="flex-row">
             <input type="button" value="Aprašymas" @click="onAbout">
-            <input type="button" value="Pirkti" v-if="!isAdmin" @click="addToCart">
+            <input type="button" value="Pirkti" v-if="!isAdmin && isLogged" @click="addToCart">
+            <input type="button" class="noHover" value="" v-if="!isLogged" disabled>
             <input type="button" value="Redaguoti" v-if="isAdmin" @click="onEdit">
             <input type="button" value="Šalinti" v-if="isAdmin" @click="onDelete(product.id)">
         </div>
@@ -27,7 +28,11 @@ export default {
             } else {
                 return true
             }
+        },
+        isLogged () {
+            return this.$store.state.loggedIn
         }
+
     },
     methods: {
         onAbout () {
@@ -86,6 +91,9 @@ export default {
     flex-direction: row;
     width: calc(100% + 2.5rem);
     margin-left: -1.25rem;
+}
+.noHover{
+    pointer-events: none;
 }
 @media (max-width: 992px) { 
     .product {

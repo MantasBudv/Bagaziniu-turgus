@@ -96,6 +96,7 @@ export default {
     onBuy () {
         axios.post(`/pirkti`, {
             sum: this.totalSum,
+            user_id: this.$store.state.user.id
         }).then((res) => {
             this.products.forEach((item) => {
                 this.$store.commit('removeCartItem', item.id)
