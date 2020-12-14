@@ -24,6 +24,16 @@ class PaymentMethodController extends AbstractController
     }
 
     /**
+     * @Route("/mokejimai/visi", name="mokejimai", methods="GET")
+     */
+    public function getAllPaymentMethods()
+    {
+        $paymentMethod = $this->getDoctrine()->getRepository(PaymentMethod::class)->findAll();
+        $json = $this->get("serializer")->serialize($paymentMethod, 'json');
+        return new JsonResponse($json, 200, [], true);
+    }
+
+    /**
     * @Route("/payment/method/sukurti", methods="POST")
     */
     public function addPaymentMethod(Request $request): Response

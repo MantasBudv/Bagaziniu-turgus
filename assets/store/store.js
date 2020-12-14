@@ -9,6 +9,7 @@ export const store = new Vuex.Store({
         loggedIn: false,
         products: [],
         coupons: [],
+        paymentMethods: [],
         filters: {
             fromY: '',
             toY: '',
