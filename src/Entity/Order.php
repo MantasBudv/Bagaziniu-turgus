@@ -38,6 +38,11 @@ class Order
      */
     private $expiration_date;
 
+    /**
+    * @ORM\Column(type="integer")
+    */
+    private $user_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,9 +77,21 @@ class Order
         return $this->total;
     }
 
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
     public function setTotal(float $total): self
     {
         $this->total = $total;
+
+        return $this;
+    }
+
+    public function setUserId(int $id): self
+    {
+        $this->user_id = $id;
 
         return $this;
     }

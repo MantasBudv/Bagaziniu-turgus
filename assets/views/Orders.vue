@@ -33,7 +33,6 @@ export default {
             params: {
                 id: index
         }}).then((res) => {
-            console.log(res.data);
             pdfMake.vfs = pdfFonts.pdfMake.vfs;
             var docDefinition = {
                 content: [
@@ -50,7 +49,10 @@ export default {
       }
   },
   mounted () {
-      axios.get('/mokejimai/visi').then((res) => {
+      axios.get('/mokejimai/visi', {
+            params: {
+                id: this.$store.state.user.id
+        }}).then((res) => {
           this.orders = res.data
           res.data.forEach((item) => {
             if (item.creationDate) {

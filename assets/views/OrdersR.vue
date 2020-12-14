@@ -1,23 +1,20 @@
 <template>
   <div class="orders">
-  
-
-      <table class="table table-striped table-hover align-middle">
-    <thead>
-        <tr>
-        <th scope="col">Užsakymo data</th>
-        <th scope="col">Suma</th>
-        <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="(order,index) in orders" :key="index">
-            <td>{{order.creationDate}}</td>
-            <td>{{order.total}}</td>
-            <td><b-button @click="onComplete(order.id)" variant="dark">Užbaigti</b-button></td>
-        </tr>
-    </tbody>
-      </table></div>
+    <div class="row names">
+        <p>Užsakymo data</p>
+        <p>Kliento id</p>
+        <p>Suma</p>
+        <p>Veiksmai</p>
+     </div>
+    <div>
+        <div class="row" v-for="(order,index) in orders" :key="index">
+            <p>{{order.creationDate}}</p>
+            <p>{{order.userId}}</p>
+            <p>{{order.total}}</p>
+            <p><b-button @click="onComplete(order.id)" variant="dark">Užbaigti</b-button></p>
+        </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -39,6 +36,7 @@ export default {
   mounted() {
       axios.get("/mokejimai/aktyvus").then((res)=>{
           this.orders=res.data
+          console.log(res.data)
           res.data.forEach((item) => {
             if (item.creationDate) {
                 item.creationDate = item.creationDate.substring(0, 10)
@@ -50,11 +48,11 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.questions {
+.orders {
     display: flex;
     flex-direction: column;
     padding: 1.5em;
-    max-width: 900px;
+    max-width: 1200px;
     background-color: #fff;
     border-radius: 10px;
     margin: 5em auto 0 auto;
@@ -63,7 +61,7 @@ export default {
     display: flex;
     flex-direction: row;
     p {
-        width: 40%;
+        width: 25%;
     }
 }
 .names {

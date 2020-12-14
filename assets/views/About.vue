@@ -26,7 +26,7 @@
             </table>
             
             <p class="bigger">{{product.price}} €</p>
-            <b-button variant="dark" @click="addToCart"><b-icon id="profile" icon="plus" aria-hidden="true"></b-icon> Pridėti į krepšelį</b-button>
+            <b-button variant="dark" @click="addToCart" v-if="isLogged"><b-icon id="profile" icon="plus" aria-hidden="true"></b-icon> Pridėti į krepšelį</b-button>
         </div>
   </div>
 </template>
@@ -40,6 +40,11 @@ export default {
       product: []
     }
   },
+  computed: {
+    isLogged () {
+        return this.$store.state.loggedIn
+    }
+},
   methods: {
       addToCart () {
           this.$store.commit('addToCart', this.product.id)

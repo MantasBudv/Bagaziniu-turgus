@@ -116,7 +116,6 @@ export default {
             var docDefinition = {
                                     content: 
                                     [
-
                                         {text: "Prekių ataskaita:\n\n", fontSize:20},
                                         {
                                         layout: 'lightHorizontalLines', // optional
