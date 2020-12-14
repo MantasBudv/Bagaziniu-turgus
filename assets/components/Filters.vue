@@ -1,8 +1,13 @@
 <template>
 <b-container class="container">
-  <b-button style="text-align : left" squared block v-b-toggle.collapse-1 variant="clear">Filter              
-                    <b-icon id="profile" icon="caret-down" aria-hidden="true"></b-icon>
-  </b-button>
+    <div class="flex-row justify">
+        <b-button style="text-align : left" squared block v-b-toggle.collapse-1 variant="clear" @click="showFilter = !showFilter">Filtruoti              
+                <b-icon id="profile" icon="caret-down" aria-hidden="true" :class="{'rotated':showFilter}" class="icon"></b-icon>
+        </b-button>
+        <b-button style="text-align : left" squared block variant="clear" @click="onSort">Rikiuoti              
+                <b-icon id="profile" icon="caret-down" aria-hidden="true" :class="{'rotated':sort}" class="icon"></b-icon>
+        </b-button>
+    </div>
   <b-collapse id="collapse-1" class="mt-2">
         <b-row class="text-center">
             <b-col sm="6">
@@ -60,7 +65,15 @@ export default {
             fromPrice: '',
             toPrice: '',
             country: '',
-            name: ''
+            name: '',
+            sort: false,
+            showFilter: false
+        }
+    },
+    methods: {
+        onSort () {
+            this.sort = !this.sort
+            this.$store.state.products = this.$store.state.products.reverse()
         }
     },
     watch: {
@@ -99,6 +112,17 @@ export default {
 }
 input::placeholder {
     color: rgba(53, 26, 26, 0.2)
+}
+.justify {
+    justify-content: space-between;
+}
+.icon {
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+}
+.rotated {
+    transform: rotate(180deg);
+    transition: transform 0.5s;
 }
 // Small devices (landscape phones, 576px and up)
 @media (max-width: 576px) { 
