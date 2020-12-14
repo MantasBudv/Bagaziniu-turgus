@@ -23,9 +23,8 @@ export default {
     axios.get('/nuolaidos/visos').then((res)=>{
       this.$store.state.coupons = res.data
     })
-    axios.get('/mokejimai/visi').then((res)=>{
+    axios.get('/mokejimuikai').then((res)=>{
       this.$store.state.paymentMethods = res.data
-      console.log(res.data)
     })
   }
 }

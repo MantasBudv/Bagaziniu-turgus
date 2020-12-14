@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\PaymentMethod;
+use App\Repository\PaymentMethodRepository;
 use App\Repository\ProductRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,7 +25,7 @@ class PaymentMethodController extends AbstractController
     }
 
     /**
-     * @Route("/mokejimai/visi", name="mokejimai", methods="GET")
+     * @Route("/mokejimuikai", methods="GET")
      */
     public function getAllPaymentMethods()
     {

@@ -36,7 +36,6 @@ export default {
   mounted() {
       axios.get("/mokejimai/aktyvus").then((res)=>{
           this.orders=res.data
-          console.log(res.data)
           res.data.forEach((item) => {
             if (item.creationDate) {
                 item.creationDate = item.creationDate.substring(0, 10)

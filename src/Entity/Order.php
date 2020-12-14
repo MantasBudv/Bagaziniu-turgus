@@ -43,6 +43,11 @@ class Order
     */
     private $user_id;
 
+    /**
+    * @ORM\Column(type="integer")
+    */
+    private $payment_method_id;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,9 +58,21 @@ class Order
         return $this->status;
     }
 
+    public function getPaymentMethod()
+    {
+        return $this->payment_method_id;
+    }
+
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function setPaymentMethod(int $id): self
+    {
+        $this->payment_method_id = $id;
 
         return $this;
     }
