@@ -57,8 +57,8 @@ export default {
         return {
             fromY: '',
             toY: '',
-            fromPrice: null,
-            toPrice: null,
+            fromPrice: '',
+            toPrice: '',
             country: '',
             name: ''
         }

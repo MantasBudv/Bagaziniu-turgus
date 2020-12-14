@@ -12,8 +12,8 @@ export const store = new Vuex.Store({
         filters: {
             fromY: '',
             toY: '',
-            fromPrice: null,
-            toPrice: null,
+            fromPrice: '',
+            toPrice: '',
             country: '',
             name: ''
         }
@@ -32,11 +32,11 @@ export const store = new Vuex.Store({
                     }
                 }
             }
-            if (state.filters.fromPrice !== null) {
+            if (state.filters.fromPrice !== '') {
                 products = products.filter(item => item.price >= Number(state.filters.fromPrice))
             }
-            if (state.filters.toPrice !== null) {
-                if (state.filters.fromPrice !== null) {
+            if (state.filters.toPrice !== '') {
+                if (state.filters.fromPrice !== '') {
                     if (Number(state.filters.fromPrice) <= Number(state.filters.toPrice)) {
                         products = products.filter(item => item.price <= Number(state.filters.toPrice))
                     }
